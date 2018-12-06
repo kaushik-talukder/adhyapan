@@ -1,0 +1,36 @@
+<nav th:fragment="header" class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Adhyapan</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<!--li><a href="/">Home</a></li-->
+			<li class="dropdown"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#">Student Management<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Register Student</a></li>
+					<li><a href="#">View Student</a></li>
+				</ul>
+			</li>
+			<li class="dropdown"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#">Class Management<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Create Class</a></li>
+					<li><a href="#">View Class</a></li>
+				</ul>
+			</li>
+			<li class="dropdown"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#">Admin Control<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Manage Center</a></li>
+					<li><a href="#">Manage School</a></li>
+					<li><a href="/manageSubject">Manage Subject</a></li>
+					<li><a href="#">Manage Standard</a></li>
+					<li><a href="#">Manage Teacher</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<div th:fragment="footer" class="text-center">&copy; Adhyapan All Rights Reserved</div>

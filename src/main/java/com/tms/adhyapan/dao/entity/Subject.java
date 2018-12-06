@@ -1,0 +1,26 @@
+package com.tms.adhyapan.dao.entity;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.Data;
+
+@Entity
+@Data
+public class Subject implements Serializable {
+
+	private static final long serialVersionUID = -5477675741562859204L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String subjectName;
+	private String subjectCode;
+	private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
+	private Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+}

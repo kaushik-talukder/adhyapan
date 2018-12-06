@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="images/logo.PNG" />
+<title>Home Page</title>
+<link rel="stylesheet" href="css-lib/bootstrap.min.css">
+<link rel="stylesheet" href="css-custom/common.css">
+<script src="js-lib/jquery.min.js"></script>
+<script src="js-lib/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<header th:insert="header-footer.html :: header"> </header>
+
+			<div class="panel entire-height">
+				<div class="panel-body">
+					<!-- Start your page content -->
+					<h1>Welcome to Adhyapan Student Management System.</h1>
+				</div>
+			</div>
+
+			<footer th:insert="header-footer.html :: footer"></footer>
+		</div>
+	</div>
+</body>
+</html>

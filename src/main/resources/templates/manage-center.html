@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="css-lib/jquery.dataTables.min.css">
 <link rel="stylesheet" href="css-lib/dataTables.bootstrap.css"/>
 <link rel="stylesheet" href="css-lib/jquery-ui.min.css"/>
-<link rel="stylesheet" href="css-lib/bootstrap-select.min.css"/>
 
 <link rel="stylesheet" href="css-custom/common.css">
 
@@ -21,10 +20,9 @@
 <script src="js-lib/jquery.dataTables.min.js"></script>
 <script src="js-lib/dataTables.bootstrap.min.js"></script>
 <script src="js-lib/jquery-ui.min.js"></script>
-<script src="js-lib/bootstrap-select.min.js"></script>
 
 <script src="js-custom/common.js"></script>
-<script src="js-custom/view-teacher.js"></script>
+<script src="js-custom/manage-center.js"></script>
 </head>
 
 <body>
@@ -37,31 +35,28 @@
 				<div class="panel-body">
 					<!-- Start your page content -->
 					<div class="panel-heading">
-						<h2>View Teacher</h2>
+						<h2>Manage Centers</h2>
 					</div>
+					
 					<div class="panel-body">
-						<div id="div-all-teachers-display">
-							<table id="tab-all-teachers" th:fragment="frag-all-teachers" class="table table-hover" style="width: 100%">
+						<div id="div-all-centers-display">
+							<table id="tab-all-centers" th:fragment="frag-all-centers" class="table table-hover" style="width: 100%">
 								<thead>
 									<tr>
 										<th>ID</th>
 										<th>Name</th>
-										<th>Code</th>
-										<th>School</th>
-										<th>Subject</th>
-										<th>Contact</th>
 										<th>Address</th>
+										<th>SPOC</th>
+										<th>Contact</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="teacher : ${teacherList}">
-										<td th:text="${teacher.id}"></td>
-										<td th:text="${teacher.firstName +' '+teacher.lastName}"></td>
-										<td th:text="${teacher.teacherCode}"></td>
-										<td th:text="${teacher.schoolName}"></td>
-										<td th:text="${teacher.subjectName}"></td>
-										<td th:text="${teacher.contact}"></td>
-										<td th:text="${teacher.address}"></td>
+									<tr th:each="center : ${centerList}">
+										<td th:text="${center.id}"></td>
+										<td th:text="${center.name}"></td>
+										<td th:text="${center.address}"></td>
+										<td th:text="${center.spoc}"></td>
+										<td th:text="${center.contact}"></td>
 									</tr>
 								</tbody>
 							</table>

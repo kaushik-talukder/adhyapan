@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tms.adhyapan.dao.entity.Center;
 import com.tms.adhyapan.dao.entity.School;
 import com.tms.adhyapan.dao.entity.Subject;
+import com.tms.adhyapan.dao.repository.CenterRepository;
 import com.tms.adhyapan.dao.repository.SchoolRepository;
 import com.tms.adhyapan.dao.repository.SubjectRepository;
 
@@ -29,6 +31,8 @@ public class AdminController {
 	private SubjectRepository subjectRepository;
 	@Autowired
 	private SchoolRepository schoolRepository;
+	@Autowired
+	private CenterRepository centerRepository;
 	
 	@RequestMapping(value = "/manageSubject")
 	public ModelAndView manageSubject(HttpServletRequest request) {
@@ -69,6 +73,20 @@ public class AdminController {
 	public String populateAllSchools(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
 		List<School> schoolList = schoolRepository.findAll();
 		model.addAttribute("schoolList", schoolList);
+		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/manageCenter")
+	public ModelAndView manageCenter(HttpServletRequest request) {
+		LOGGER.info("Inside manage-center");
+		ModelAndView mv = new ModelAndView("manage-center");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/populateAllCenters")
+	public String populateAllCenters(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
+		List<Center> centerList = centerRepository.findAll();
+		model.addAttribute("centerList", centerList);
 		return pageFragment;
 	}
 }

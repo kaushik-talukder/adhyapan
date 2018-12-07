@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="images/logo.PNG" />
+<title>Manage School</title>
+
+<link rel="stylesheet" href="css-lib/bootstrap.min.css">
+<link rel="stylesheet" href="css-lib/jquery.dataTables.min.css">
+<link rel="stylesheet" href="css-lib/dataTables.bootstrap.css"/>
+<link rel="stylesheet" href="css-lib/jquery-ui.min.css"/>
+
+<link rel="stylesheet" href="css-custom/common.css">
+
+<script src="js-lib/jquery.min.js"></script>
+<script src="js-lib/bootstrap.min.js"></script>
+<script src="js-lib/jquery.dataTables.min.js"></script>
+<script src="js-lib/dataTables.bootstrap.min.js"></script>
+<script src="js-lib/jquery-ui.min.js"></script>
+
+<script src="js-custom/common.js"></script>
+<script src="js-custom/manage-school.js"></script>
+</head>
+
+<body>
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<header th:insert="header-footer.html :: header"> </header>
+
+			<div class="panel entire-height">
+				<div class="panel-body">
+					<!-- Start your page content -->
+					<div class="panel-heading">
+						<h2>Manage Schools</h2>
+					</div>
+					<div class="panel-body">
+						<h4>Add School</h4>
+						<div class="row">
+							<div class="col-lg-4">
+								<label class="required">School Name: </label>
+								<input id="school-name" class="form-control" type="text" />
+							</div>
+							<div class="col-lg-4">
+								<label class="required">School Code: </label>
+								<input id="school-code" class="form-control" type="text" />
+							</div>
+							<div class="col-lg-4">
+								<label>&nbsp;</label><br/>
+								<button class="btn btn-primary" id="btn-save-school">Save</button>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body" id="div-all-schools-display">
+						<h4>Existing Subjects</h4>
+						<table id="tab-all-subject" th:fragment="frag-all-schools" class="table table-hover" style="width: 100%">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>School Name</th>
+									<th>School Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="school : ${schoolList}">
+									<td th:text="${school.id}"></td>
+									<td th:text="${school.schoolName}"></td>
+									<td th:text="${school.schoolCode}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<footer th:insert="header-footer.html :: footer"></footer>
+		</div>
+	</div>
+
+	<div class="modal-popup" id="save-school-dialog-message" title="Add School">
+		<p>School added successfully</p>
+	</div>
+	
+</body>
+</html>

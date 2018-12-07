@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tms.adhyapan.dao.entity.School;
 import com.tms.adhyapan.dao.entity.Subject;
+import com.tms.adhyapan.dao.repository.SchoolRepository;
 import com.tms.adhyapan.dao.repository.SubjectRepository;
 
 @Controller
@@ -24,9 +26,11 @@ public class AdminController {
 	
 	@Autowired
 	private SubjectRepository subjectRepository;
+	@Autowired
+	private SchoolRepository schoolRepository;
 	
 	@RequestMapping(value = "/manageSubject")
-	public ModelAndView manageSubjects(HttpServletRequest request) {
+	public ModelAndView manageSubject(HttpServletRequest request) {
 		LOGGER.info("Inside manageSubject");
 		ModelAndView mv = new ModelAndView("manage-subject");
 		return mv;
@@ -44,5 +48,26 @@ public class AdminController {
 		List<Subject> subjectList = subjectRepository.findAll();
 		model.addAttribute("subjectList", subjectList);
 		return "manage-subject :: frag-all-subjects";
+	}
+	
+	@RequestMapping(value = "/manageSchool")
+	public ModelAndView manageSchool(HttpServletRequest request) {
+		LOGGER.info("Inside manageSchool");
+		ModelAndView mv = new ModelAndView("manage-school");
+		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/saveSchool")
+	public School saveSchool(@RequestBody School school) {
+		School savedSchool = schoolRepository.save(school);
+		return savedSchool;
+	}
+	
+	@RequestMapping(value = "/populateAllSchools")
+	public String populateAllSchools(Model model) {
+		List<School> schoolList = schoolRepository.findAll();
+		model.addAttribute("schoolList", schoolList);
+		return "manage-school :: frag-all-schools";
 	}
 }

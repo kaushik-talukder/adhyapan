@@ -52,14 +52,25 @@
 						</div>
 						<div class="row row-top-buffer">
 							<div class="col-lg-4">
+								<label class="required">Gender: </label><br/>
+								<input type="radio" name="gender" value="M" />&nbsp;Male&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="gender" value="F" />&nbsp;Female
+							</div>
+							<div class="col-lg-4">
 								<label class="required">Student Code: </label>
 								<input id="student-code" class="form-control" type="text" />
 							</div>
+						</div>
+						<div class="row row-top-buffer">
 							<div class="col-lg-4">
 								<label class="required">School: </label>
 								<select id="select-school-dropdown" th:fragment="frag-school-dropdown" class="form-control selectpicker" data-live-search="true" title="Select a school">
 									<option th:each="school : ${schoolList}" th:attr="value=${school.id}"><span th:text="${school.schoolCode +' - '+ school.schoolName}"></span></option>
 								</select>
+							</div>
+							<div class="col-lg-4">
+								<label class="required">Address: </label>
+								<input id="address" class="form-control" type="text" />
 							</div>
 						</div>
 						<div class="row row-top-buffer">
@@ -68,22 +79,18 @@
 								<input id="guardian-name" class="form-control" type="text" />
 							</div>
 							<div class="col-lg-4">
-								<label class="required">Address: </label>
-								<textarea id="address" class="form-control" rows="" cols=""></textarea>
-							</div>
-						</div>
-						<div class="row row-top-buffer">
-							<div class="col-lg-4">
 								<label>Guardian Contact: </label>
 								<input id="guardian-contact" type="text" class="form-control" />
 							</div>
+						</div>
+						<div class="row row-top-buffer">
+							
 							<div class="col-lg-4">
 								<label class="required">Student Contact: </label>
 								<input id="student-contact" class="form-control" type="text" />
 							</div>
-						</div>
-						<div class="row row-top-buffer text-right">
-							<div class="col-lg-8">
+							<div class="col-lg-4 text-right">
+								<br/>
 								<button id="btn-register-student" class="btn btn-primary">Register</button>
 							</div>
 						</div>

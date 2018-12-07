@@ -23,7 +23,7 @@ function registerStudent(){
 	var address = $('#address').val();
 	var guardianContact = $('#guardian-contact').val();
 	var studentContact = $('#student-contact').val();
-	
+	var gender = $('input[name=gender]:checked').val();
 	$.ajax({
 		method : "POST",
 		url : "registerStudent",
@@ -34,6 +34,7 @@ function registerStudent(){
 			guardianName : guardianName,
 			guardianContact: guardianContact,
 			studentContact: studentContact,
+			gender: gender,
 			address: address,
 			schoolId: schoolId
 		}),
@@ -61,4 +62,5 @@ function resetForm() {
 	$('#address').val('');
 	$('#guardian-contact').val('');
 	$('#student-contact').val('');
+	$('input[name="gender"]').prop('checked', false);
 }

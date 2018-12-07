@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tms.adhyapan.dao.entity.Student;
 import com.tms.adhyapan.dao.repository.StudentRepository;
+import com.tms.adhyapan.util.CommonConstants;
 
 @Controller
 public class StudentMgmtController {
@@ -32,6 +33,7 @@ public class StudentMgmtController {
 	@ResponseBody
 	@RequestMapping(value = "/registerStudent")
 	public Student registerStudent(@RequestBody Student student) {
+		student.setIsActive(CommonConstants.ACTIVE_YES);
 		Student registeredStudent = studentRepository.save(student);
 		return registeredStudent;
 	}

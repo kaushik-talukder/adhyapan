@@ -1,5 +1,7 @@
 package com.tms.adhyapan.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tms.adhyapan.dao.entity.Student;
 import com.tms.adhyapan.dao.repository.StudentRepository;
 import com.tms.adhyapan.util.CommonConstants;
+import com.tms.adhyapan.util.CommonUtils;
 
 @Controller
 public class StudentMgmtController {
@@ -36,5 +39,14 @@ public class StudentMgmtController {
 		student.setIsActive(CommonConstants.ACTIVE_YES);
 		Student registeredStudent = studentRepository.save(student);
 		return registeredStudent;
+	}
+	
+	@RequestMapping(value = "/viewStudentLandingPage")
+	public ModelAndView viewStudentLandingPage(HttpServletRequest request) {
+		LOGGER.info("Inside viewStudentLandingPage");
+		ModelAndView mv = new ModelAndView("view-student");
+		List<String> alphabetList = CommonUtils.getAlphabetList();
+		mv.addObject("alphabetList", alphabetList);
+		return mv;
 	}
 }

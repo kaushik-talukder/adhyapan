@@ -14,3 +14,7 @@ label.required:after {
 .row-top-buffer{
 	margin-top: 30px;
 }
+
+.padding-right-15{
+	padding-right:15px; 
+}

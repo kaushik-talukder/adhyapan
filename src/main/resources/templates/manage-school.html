@@ -54,24 +54,26 @@
 							</div>
 						</div>
 					</div>
-					<div class="panel-body" id="div-all-schools-display">
-						<h4>Existing Subjects</h4>
-						<table id="tab-all-subject" th:fragment="frag-all-schools" class="table table-hover" style="width: 100%">
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th>School Name</th>
-									<th>School Code</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="school : ${schoolList}">
-									<td th:text="${school.id}"></td>
-									<td th:text="${school.schoolName}"></td>
-									<td th:text="${school.schoolCode}"></td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="panel-body">
+						<h4>Existing Schools</h4>
+						<div id="div-all-schools-display">
+							<table id="tab-all-subject" th:fragment="frag-all-schools" class="table table-hover" style="width: 100%">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>School Name</th>
+										<th>School Code</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="school : ${schoolList}">
+										<td th:text="${school.id}"></td>
+										<td th:text="${school.schoolName}"></td>
+										<td th:text="${school.schoolCode}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

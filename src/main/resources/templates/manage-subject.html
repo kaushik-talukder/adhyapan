@@ -54,24 +54,26 @@
 							</div>
 						</div>
 					</div>
-					<div class="panel-body" id="div-all-subjects-display">
+					<div class="panel-body">
 						<h4>Existing Subjects</h4>
-						<table id="tab-all-subject" th:fragment="frag-all-subjects" class="table table-hover" style="width: 100%">
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th>Subject Name</th>
-									<th>Subject Code</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="subject: ${subjectList}">
-									<td th:text="${subject.id}"></td>
-									<td th:text="${subject.subjectName}"></td>
-									<td th:text="${subject.subjectCode}"></td>
-								</tr>
-							</tbody>
-						</table>
+						<div id="div-all-subjects-display">
+							<table id="tab-all-subject" th:fragment="frag-all-subjects" class="table table-hover" style="width: 100%">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Subject Name</th>
+										<th>Subject Code</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="subject: ${subjectList}">
+										<td th:text="${subject.id}"></td>
+										<td th:text="${subject.subjectName}"></td>
+										<td th:text="${subject.subjectCode}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="images/logo.PNG" />
+<title>Adhyapan</title>
+
+<link rel="stylesheet" href="css-lib/bootstrap.min.css">
+<link rel="stylesheet" href="css-lib/jquery.dataTables.min.css">
+<link rel="stylesheet" href="css-lib/dataTables.bootstrap.css"/>
+<link rel="stylesheet" href="css-lib/jquery-ui.min.css"/>
+
+<link rel="stylesheet" href="css-custom/common.css">
+
+<script src="js-lib/jquery.min.js"></script>
+<script src="js-lib/bootstrap.min.js"></script>
+<script src="js-lib/jquery.dataTables.min.js"></script>
+<script src="js-lib/dataTables.bootstrap.min.js"></script>
+<script src="js-lib/jquery-ui.min.js"></script>
+
+<script src="js-custom/common.js"></script>
+<script src="js-custom/manage-standard.js"></script>
+</head>
+
+<body>
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<header th:insert="header-footer.html :: header"> </header>
+
+			<div class="panel entire-height">
+				<div class="panel-body">
+					<!-- Start your page content -->
+					<div class="panel-heading">
+						<h2>Manage Standards</h2>
+					</div>
+					
+					<div class="panel-body">
+						<div id="div-all-standards-display">
+							<table id="tab-all-standards" th:fragment="frag-all-standards" class="table table-hover" style="width: 100%">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Standard</th>
+										<th>Description</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="standard : ${standardList}">
+										<td th:text="${standard.id}"></td>
+										<td th:text="${standard.standard}"></td>
+										<td th:text="${standard.description}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer th:insert="header-footer.html :: footer"></footer>
+		</div>
+	</div>
+</body>
+</html>

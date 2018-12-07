@@ -17,9 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tms.adhyapan.dao.entity.Center;
 import com.tms.adhyapan.dao.entity.School;
+import com.tms.adhyapan.dao.entity.Standard;
 import com.tms.adhyapan.dao.entity.Subject;
 import com.tms.adhyapan.dao.repository.CenterRepository;
 import com.tms.adhyapan.dao.repository.SchoolRepository;
+import com.tms.adhyapan.dao.repository.StandardRepository;
 import com.tms.adhyapan.dao.repository.SubjectRepository;
 
 @Controller
@@ -33,6 +35,8 @@ public class AdminController {
 	private SchoolRepository schoolRepository;
 	@Autowired
 	private CenterRepository centerRepository;
+	@Autowired
+	private StandardRepository standardRepository;
 	
 	@RequestMapping(value = "/manageSubject")
 	public ModelAndView manageSubject(HttpServletRequest request) {
@@ -87,6 +91,20 @@ public class AdminController {
 	public String populateAllCenters(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
 		List<Center> centerList = centerRepository.findAll();
 		model.addAttribute("centerList", centerList);
+		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/manageStandard")
+	public ModelAndView manageStandard(HttpServletRequest request) {
+		LOGGER.info("Inside manageStandard");
+		ModelAndView mv = new ModelAndView("manage-standard");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/populateAllStandards")
+	public String populateAllStandards(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
+		List<Standard> standardList = standardRepository.findAll();
+		model.addAttribute("standardList", standardList);
 		return pageFragment;
 	}
 }

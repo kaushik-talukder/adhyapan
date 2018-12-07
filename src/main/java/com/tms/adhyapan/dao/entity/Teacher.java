@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Formula;
+
 import lombok.Data;
 
 @Entity
@@ -25,7 +27,11 @@ public class Teacher implements Serializable {
 	private String contact;
 	private String address;
 	private Long schoolId;
+	@Formula(value = "(select s.school_name from school s where s.id = school_id)")
+	private String schoolName;
 	private Long subjectId;
+	@Formula(value = "(select s.subject_name from subject s where s.id = subject_id)")
+	private String subjectName;
 	private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
 	private Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
 }

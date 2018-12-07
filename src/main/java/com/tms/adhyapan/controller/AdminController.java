@@ -70,4 +70,11 @@ public class AdminController {
 		model.addAttribute("schoolList", schoolList);
 		return "manage-school :: frag-all-schools";
 	}
+	
+	@RequestMapping(value = "/registerTeacher")
+	public ModelAndView registerTeacher(HttpServletRequest request) {
+		LOGGER.info("Inside registerTeacher");
+		ModelAndView mv = new ModelAndView("register-teacher");
+		return mv;
+	}
 }

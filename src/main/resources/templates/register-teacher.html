@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="images/logo.PNG" />
+<title>Adhyapan</title>
+
+<link rel="stylesheet" href="css-lib/bootstrap.min.css">
+<link rel="stylesheet" href="css-lib/jquery.dataTables.min.css">
+<link rel="stylesheet" href="css-lib/dataTables.bootstrap.css"/>
+<link rel="stylesheet" href="css-lib/jquery-ui.min.css"/>
+<link rel="stylesheet" href="css-lib/bootstrap-select.min.css"/>
+
+<link rel="stylesheet" href="css-custom/common.css">
+
+<script src="js-lib/jquery.min.js"></script>
+<script src="js-lib/bootstrap.min.js"></script>
+<script src="js-lib/jquery.dataTables.min.js"></script>
+<script src="js-lib/dataTables.bootstrap.min.js"></script>
+<script src="js-lib/jquery-ui.min.js"></script>
+<script src="js-lib/bootstrap-select.min.js"></script>
+
+<script src="js-custom/common.js"></script>
+<!--script src="js-custom/register-teacher.js"></script-->
+</head>
+
+<body>
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<header th:insert="header-footer.html :: header"> </header>
+
+			<div class="panel entire-height">
+				<div class="panel-body">
+					<!-- Start your page content -->
+					<div class="panel-heading">
+						<h2>Register Teacher</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-4">
+								<label class="required">First Name: </label>
+								<input id="first-name" class="form-control" type="text" />
+							</div>
+							<div class="col-lg-4">
+								<label class="required">Last Name: </label>
+								<input id="last-name" class="form-control" type="text" />
+							</div>
+						</div>
+						<div class="row row-top-buffer">
+							<div class="col-lg-4">
+								<label class="required">School: </label>
+								<select class="form-control selectpicker" data-live-search="true" title="Select a school">
+									<option>JPBS</option>
+									<option>SP</option>
+								</select>
+							</div>
+							<div class="col-lg-4">
+								<label class="required">Subject: </label>
+								<select class="form-control selectpicker" data-live-search="true" title="Select a subject">
+									<option>Math</option>
+									<option>Stat</option>
+								</select>
+							</div>
+						</div>
+						<div class="row row-top-buffer">
+							<div class="col-lg-4">
+								<label class="required">Teacher Code: </label>
+								<input id="teacher-code" class="form-control" type="text" />
+							</div>
+							<div class="col-lg-4">
+								<label class="required">Contact: </label>
+								<input id="teacher-contact" class="form-control" type="text" />
+							</div>
+						</div>
+						<div class="row row-top-buffer">
+							<div class="col-lg-8">
+								<label>Address: </label>
+								<textarea id="teacher-address" rows="" cols="" class="form-control"></textarea>
+							</div>
+						</div>
+						<div class="row row-top-buffer text-right">
+							<div class="col-lg-8">
+								<button class="btn btn-primary">Register</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer th:insert="header-footer.html :: footer"></footer>
+		</div>
+	</div>
+
+	<div class="modal-popup" id="register-teacher-dialog-message" title="Register Teacher">
+		<p>Teacher registered successfully</p>
+	</div>
+	
+</body>
+</html>

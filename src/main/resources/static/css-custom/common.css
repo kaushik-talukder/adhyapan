@@ -11,3 +11,6 @@ label.required:after {
 .modal-popup{
 	display: none;
 }
+.row-top-buffer{
+	margin-top: 30px;
+}

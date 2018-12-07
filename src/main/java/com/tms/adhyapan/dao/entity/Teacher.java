@@ -1,0 +1,31 @@
+package com.tms.adhyapan.dao.entity;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.Data;
+
+@Entity
+@Data
+public class Teacher implements Serializable {
+
+	private static final long serialVersionUID = 4569152174501395948L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String firstName;
+	private String lastName;
+	private String teacherCode;
+	private String contact;
+	private String address;
+	private Long schoolId;
+	private Long subjectId;
+	private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
+	private Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+}

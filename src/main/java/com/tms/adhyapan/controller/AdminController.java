@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -44,10 +45,10 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/populateAllSubjects")
-	public String populateAllSubjects(Model model) {
+	public String populateAllSubjects(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
 		List<Subject> subjectList = subjectRepository.findAll();
 		model.addAttribute("subjectList", subjectList);
-		return "manage-subject :: frag-all-subjects";
+		return pageFragment;
 	}
 	
 	@RequestMapping(value = "/manageSchool")
@@ -65,16 +66,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/populateAllSchools")
-	public String populateAllSchools(Model model) {
+	public String populateAllSchools(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
 		List<School> schoolList = schoolRepository.findAll();
 		model.addAttribute("schoolList", schoolList);
-		return "manage-school :: frag-all-schools";
-	}
-	
-	@RequestMapping(value = "/registerTeacher")
-	public ModelAndView registerTeacher(HttpServletRequest request) {
-		LOGGER.info("Inside registerTeacher");
-		ModelAndView mv = new ModelAndView("register-teacher");
-		return mv;
+		return pageFragment;
 	}
 }

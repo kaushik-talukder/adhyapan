@@ -24,7 +24,7 @@
 <script src="js-lib/bootstrap-select.min.js"></script>
 
 <script src="js-custom/common.js"></script>
-<!--script src="js-custom/register-teacher.js"></script-->
+<script src="js-custom/register-teacher.js"></script>
 </head>
 
 <body>
@@ -53,16 +53,14 @@
 						<div class="row row-top-buffer">
 							<div class="col-lg-4">
 								<label class="required">School: </label>
-								<select class="form-control selectpicker" data-live-search="true" title="Select a school">
-									<option>JPBS</option>
-									<option>SP</option>
+								<select id="select-school-dropdown" th:fragment="frag-school-dropdown" class="form-control selectpicker" data-live-search="true" title="Select a school">
+									<option th:each="school : ${schoolList}" th:attr="value=${school.id}"><span th:text="${school.schoolCode +' - '+ school.schoolName}"></span></option>
 								</select>
 							</div>
 							<div class="col-lg-4">
 								<label class="required">Subject: </label>
-								<select class="form-control selectpicker" data-live-search="true" title="Select a subject">
-									<option>Math</option>
-									<option>Stat</option>
+								<select id="select-subject-dropdown" th:fragment="frag-subject-dropdown" class="form-control selectpicker" data-live-search="true" title="Select a subject">
+									<option th:each="subject : ${subjectList}" th:attr="value=${subject.id}"><span th:text="${subject.subjectCode +' - '+ subject.subjectName}"></span></option>
 								</select>
 							</div>
 						</div>

@@ -32,8 +32,10 @@ function saveSchool() {
 	});
 }
 
-function populateAllSchools(){
-	$("#div-all-schools-display").load('populateAllSchools', function(response, status, xhr){
+function populateAllSchools() {
+	$("#div-all-schools-display").load('populateAllSchools', {
+		pageFragment : 'manage-school :: frag-all-schools'
+	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);
 		$('#tab-all-school').DataTable();
 	});

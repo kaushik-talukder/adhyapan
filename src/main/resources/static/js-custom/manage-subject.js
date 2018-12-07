@@ -32,8 +32,10 @@ function saveSubject() {
 	});
 }
 
-function populateAllSubjects(){
-	$("#div-all-subjects-display").load('populateAllSubjects', function(response, status, xhr){
+function populateAllSubjects() {
+	$("#div-all-subjects-display").load('populateAllSubjects', {
+		pageFragment : 'manage-subject :: frag-all-subjects'
+	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);
 		$('#tab-all-subject').DataTable();
 	});

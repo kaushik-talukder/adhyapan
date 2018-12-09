@@ -40,7 +40,98 @@
 						<h2>View Student</h2>
 					</div>
 					<div class="panel-body">
-						<a class="padding-right-15" href="javascript:void(0);" th:each = "alphabet : ${alphabetList}"><span th:text="${alphabet}"></span></a>
+						<input type="radio" class="radio-search-category" name="search-categoty" value="byFirstName" /> &nbsp; By First Name&nbsp;&nbsp;&nbsp;
+						<input type="radio" class="radio-search-category" name="search-categoty" value="byLastName" /> &nbsp; By Last Name&nbsp;&nbsp;&nbsp;
+						<input type="radio" class="radio-search-category" name="search-categoty" value="byStudentCode" /> &nbsp; By Student Code&nbsp;&nbsp;&nbsp;
+						<input type="radio" class="radio-search-category" name="search-categoty" value="byStandard" /> &nbsp; By Standard&nbsp;&nbsp;&nbsp;
+						<input type="radio" class="radio-search-category" name="search-categoty" value="byClass" /> &nbsp; By Class&nbsp;&nbsp;&nbsp;
+						<input type="radio" class="radio-search-category" name="search-categoty" value="byTeacher" /> &nbsp; By Teacher&nbsp;&nbsp;&nbsp;
+						<input type="radio" class="radio-search-category" name="search-categoty" value="bySchool" /> &nbsp; By School&nbsp;&nbsp;&nbsp;
+					</div>
+					<div class="panel-body no-display div-search-category" id="div-by-student-name">
+						<div class="row">
+							<div class="col-lg-4">
+								<a class="padding-right-15 search-by-name" href="javascript:void(0);" th:each = "alphabet : ${alphabetList}" th:attr="search-key = ${alphabet}"><span th:text="${alphabet}"></span></a>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body no-display div-search-category" id="div-by-student-code">
+						<div class="row">
+							<div class="col-lg-4">
+								<label>Student Code: </label>
+								<input type="text" class="form-control" id="student-code" placeholder="Type student code" />
+							</div>
+							<div class="col-lg-4">
+								<label>&nbsp; </label><br/>
+								<button class="btn btn-primary" id="btn-search-by-student-code">Search</button>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body no-display div-search-category" id="div-by-standard">
+						<div class="row">
+							<div class="col-lg-4">
+								<label>Standard: </label>
+								<select class="form-control selectpicker" data-live-search="true" title="Select standard">
+									<option>XII</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body no-display div-search-category" id="div-by-class">
+						<div class="row">
+							<div class="col-lg-4">
+								<label>Class: </label>
+								<select class="form-control selectpicker" data-live-search="true" title="Select class">
+									<option>LA Class</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body no-display div-search-category" id="div-by-teacher">
+						<div class="row">
+							<div class="col-lg-4">
+								<label>Teacher: </label>
+								<select class="form-control selectpicker" data-live-search="true" title="Select teacher">
+									<option>SKG</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body no-display div-search-category" id="div-by-school">
+						<div class="row">
+							<div class="col-lg-4">
+								<label>School: </label>
+								<select id="select-school-dropdown" th:fragment="frag-school-dropdown" class="form-control selectpicker" data-live-search="true" title="Select school">
+									<option class="school-option" th:each="school : ${schoolList}" th:attr="value=${school.id}"><span th:text="${school.schoolCode +' - '+ school.schoolName}"></span></option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body no-display" id="div-student-display-table">
+						<h4>Student List</h4>
+						<div id="div-student-list">
+							<table id="tab-student-list" th:fragment="frag-student-list">
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Code</th>
+										<th>Name</th>
+										<th>Standard</th>
+										<th>School</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each = "student : ${studentList}">
+										<td><span th:text = "${student.id}"></span></td>
+										<td><span th:text = "${student.studentCode}"></span></td>
+										<td><span th:text = "${student.firstName+' '+student.lastName}"></span></td>
+										<td>XII</td>
+										<td><span th:text = "${student.schoolName}"></span></td>
+									</tr>
+								</tbody>
+							</table>
+						
+						</div>
 					</div>
 				</div>
 			</div>

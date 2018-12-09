@@ -8,7 +8,7 @@ label.required:after {
 	color: red;
 }
 
-.modal-popup{
+.modal-popup, .no-display{
 	display: none;
 }
 .row-top-buffer{

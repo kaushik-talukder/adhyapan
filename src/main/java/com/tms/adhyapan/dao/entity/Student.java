@@ -32,9 +32,9 @@ public class Student implements Serializable {
 	private String guardianName;
 	private String guardianContact;
 	private String address;
-	private String isActive;
 	private String gender;
 	
 	private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
 	private Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+	private Timestamp endDate;
 }

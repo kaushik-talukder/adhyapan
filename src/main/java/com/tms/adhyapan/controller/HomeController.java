@@ -15,7 +15,7 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public ModelAndView home(HttpServletRequest request) {
 		LOGGER.info("Inside home");
-		ModelAndView mv = new ModelAndView("home");
+		ModelAndView mv = new ModelAndView("home-page");
 		return mv;
 	}
 }

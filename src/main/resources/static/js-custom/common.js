@@ -6,7 +6,7 @@ function thymeleafFragmentResponseCheck(response) {
 
 function populateSchoolDropdown(){
 	$("#select-school-dropdown").load('populateAllSchools', {
-		pageFragment : 'component/data-component.html :: frag-school-dropdown'
+		pageFragment : 'components/data-component.html :: frag-school-dropdown'
 	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);
 		$('#select-school-dropdown').selectpicker('refresh');
@@ -15,7 +15,7 @@ function populateSchoolDropdown(){
 
 function populateSubjectDropdown(){
 	$("#select-subject-dropdown").load('populateAllSubjects', {
-		pageFragment : 'component/data-component.html :: frag-subject-dropdown'
+		pageFragment : 'components/data-component.html :: frag-subject-dropdown'
 	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);
 		$('#select-subject-dropdown').selectpicker('refresh');

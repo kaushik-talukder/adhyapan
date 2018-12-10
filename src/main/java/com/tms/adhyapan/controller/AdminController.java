@@ -59,6 +59,27 @@ public class AdminController {
 		return pageFragment;
 	}
 	
+	@RequestMapping(value = "/populateAllSchools")
+	public String populateAllSchools(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
+		List<School> schoolList = schoolRepository.findAll();
+		model.addAttribute("schoolList", schoolList);
+		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/populateAllCenters")
+	public String populateAllCenters(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
+		List<Center> centerList = centerRepository.findAll();
+		model.addAttribute("centerList", centerList);
+		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/populateAllStandards")
+	public String populateAllStandards(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
+		List<Standard> standardList = standardRepository.findAll();
+		model.addAttribute("standardList", standardList);
+		return pageFragment;
+	}
+	
 	@RequestMapping(value = "/manageSchool")
 	public ModelAndView manageSchool(HttpServletRequest request) {
 		LOGGER.info("Inside manageSchool");
@@ -73,25 +94,11 @@ public class AdminController {
 		return savedSchool;
 	}
 	
-	@RequestMapping(value = "/populateAllSchools")
-	public String populateAllSchools(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
-		List<School> schoolList = schoolRepository.findAll();
-		model.addAttribute("schoolList", schoolList);
-		return pageFragment;
-	}
-	
 	@RequestMapping(value = "/manageCenter")
 	public ModelAndView manageCenter(HttpServletRequest request) {
 		LOGGER.info("Inside manage-center");
 		ModelAndView mv = new ModelAndView("manage-center");
 		return mv;
-	}
-	
-	@RequestMapping(value = "/populateAllCenters")
-	public String populateAllCenters(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
-		List<Center> centerList = centerRepository.findAll();
-		model.addAttribute("centerList", centerList);
-		return pageFragment;
 	}
 	
 	@RequestMapping(value = "/manageStandard")
@@ -101,10 +108,4 @@ public class AdminController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/populateAllStandards")
-	public String populateAllStandards(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
-		List<Standard> standardList = standardRepository.findAll();
-		model.addAttribute("standardList", standardList);
-		return pageFragment;
-	}
 }

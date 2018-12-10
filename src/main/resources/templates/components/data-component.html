@@ -3,17 +3,17 @@
 </select>
 
 <select id="select-subject-dropdown" th:fragment="frag-subject-dropdown" class="form-control selectpicker" data-live-search="true" title="Select subject">
-	<option th:each="subject : ${subjectList}" th:attr="value=${subject.id}"><span th:text="${subject.subjectCode +' - '+ subject.subjectName}"></span></option>
+	<option class="subject-option" th:each="subject : ${subjectList}" th:attr="value=${subject.id}"><span th:text="${subject.subjectCode +' - '+ subject.subjectName}"></span></option>
 </select>
 
 <select id="select-standard-dropdown" th:fragment="frag-standard-dropdown" class="form-control selectpicker" data-live-search="true" title="Select standard">
-	<option th:each="standard : ${standardList}" th:attr="value=${standard.id}"><span th:text="${standard.standard}"></span></option>
+	<option class="standard-option" th:each="standard : ${standardList}" th:attr="value=${standard.id}"><span th:text="${standard.standard}"></span></option>
 </select>
 
 <select id="select-center-dropdown" th:fragment="frag-center-dropdown" class="form-control selectpicker" data-live-search="true" title="Select center">
-	<option th:each="center : ${centerList}" th:attr="value=${center.id}"><span th:text="${center.name}"></span></option>
+	<option class="center-option" th:each="center : ${centerList}" th:attr="value=${center.id}"><span th:text="${center.name}"></span></option>
 </select>
 
 <select id="select-teacher-dropdown" th:fragment="frag-teacher-dropdown" class="form-control selectpicker" data-live-search="true" title="Select teacher">
-	<option th:each="teacher : ${teacherList}" th:attr="value=${teacher.id}"><span th:text="${teacher.teacherCode +' - '+ teacher.firstName +' '+teacher.lastName}"></span></option>
+	<option class="teacher-option" th:each="teacher : ${teacherList}" th:attr="value=${teacher.id}"><span th:text="${teacher.teacherCode +' - '+ teacher.firstName +' '+teacher.lastName}"></span></option>
 </select>

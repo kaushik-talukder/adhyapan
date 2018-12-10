@@ -6,9 +6,9 @@ $(document).ready(function() {
 		registerTeacher();
 	});
 	
-	$("#teacherStartEndDate").daterangepicker({
+	$("#teacherStartDate").daterangepicker({
 		locale: {
-			format: 'YYYY-MM-DD'
+			format: 'YYYY/MM/DD'
 		},
 		singleDatePicker : true
 	});
@@ -22,6 +22,7 @@ function registerTeacher(){
 	var teacherCode = $('#teacher-code').val();
 	var teacherContact = $('#teacher-contact').val();
 	var teacherAddress = $('#teacher-address').val();
+	var startDate = new Date($('#teacherStartDate').val());
 	
 	$.ajax({
 		method : "POST",
@@ -33,7 +34,8 @@ function registerTeacher(){
 			contact: teacherContact,
 			address: teacherAddress,
 			schoolId: schoolId,
-			subjectId: subjectId
+			subjectId: subjectId,
+			startDate: startDate
 		}),
 		dataType : "json",
 		contentType: "application/json"

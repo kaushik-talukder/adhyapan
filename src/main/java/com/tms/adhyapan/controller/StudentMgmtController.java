@@ -39,6 +39,7 @@ public class StudentMgmtController {
 	@ResponseBody
 	@RequestMapping(value = "/registerStudent")
 	public Student registerStudent(@RequestBody Student student) {
+		student.setEndDate(CommonUtils.getDefaultEndDate());
 		Student registeredStudent = studentRepository.save(student);
 		return registeredStudent;
 	}
@@ -67,7 +68,10 @@ public class StudentMgmtController {
 		case CommonConstants.SEARCH_CATEGORY_BY_STUDENT_CODE:
 			studentList = studentRepository.findByStudentCodeContainingOrderByStudentCode(searchKey);
 			break;
-		case CommonConstants.SEARCH_CATEGORY_BY_SCHOOL_ID:
+		case CommonConstants.SEARCH_CATEGORY_BY_STANDARD:
+			studentList = studentRepository.findByStandardIdOrderByFirstName(Long.valueOf(searchKey));
+			break;
+		case CommonConstants.SEARCH_CATEGORY_BY_SCHOOL:
 			studentList = studentRepository.findBySchoolIdOrderByFirstName(Long.valueOf(searchKey));
 			break;			
 		default:

@@ -18,6 +18,12 @@ $(document).ready(function() {
 		var selectedSchoolId = $("#select-school-dropdown").val();
 		getStudentList(searchCategory, selectedSchoolId);
 	});
+	
+	$('body').on('click','.standard-option', function(){
+		var searchCategory = $("input[name=search-categoty]:checked").val();
+		var selectedStandardId = $("#select-standard-dropdown").val();
+		getStudentList(searchCategory, selectedStandardId);
+	});
 });
 
 function displaySearchCategoryForm(categoryValue){
@@ -28,6 +34,7 @@ function displaySearchCategoryForm(categoryValue){
 	} else if(categoryValue == 'byStudentCode'){
 		$("#div-by-student-code").removeClass("no-display");
 	} else if(categoryValue == 'byStandard'){
+		populateStandardDropdown();
 		$("#div-by-standard").removeClass("no-display");
 	} else if(categoryValue == 'byClass'){
 		$("#div-by-class").removeClass("no-display");

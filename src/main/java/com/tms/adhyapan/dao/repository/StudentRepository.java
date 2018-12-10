@@ -12,5 +12,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 	List<Student> findByLastNameStartingWithOrderByLastName(String key);
 	List<Student> findByStudentCodeContainingOrderByStudentCode(String key);
 	List<Student> findBySchoolIdOrderByFirstName(Long key);
+	List<Student> findByStandardIdOrderByFirstName(Long key);
 }
 

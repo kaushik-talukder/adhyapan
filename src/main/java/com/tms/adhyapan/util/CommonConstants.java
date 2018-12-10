@@ -9,5 +9,9 @@ public class CommonConstants {
 	public static final String SEARCH_CATEGORY_BY_FIRST_NAME = "byFirstName";
 	public static final String SEARCH_CATEGORY_BY_LAST_NAME = "byLastName";
 	public static final String SEARCH_CATEGORY_BY_STUDENT_CODE = "byStudentCode";
-	public static final String SEARCH_CATEGORY_BY_SCHOOL_ID = "bySchool";
+	public static final String SEARCH_CATEGORY_BY_STANDARD = "byStandard";
+	public static final String SEARCH_CATEGORY_BY_SCHOOL = "bySchool";
+	
+	public static final String DEFAULT_END_DATE = "3000-12-31";
+	public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
 }

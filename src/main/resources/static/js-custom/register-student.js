@@ -1,7 +1,14 @@
 $(document).ready(function() {
 	populateSchoolDropdown();
+	populateStandardDropdown();
 	$('body').on('click', '#btn-register-student', function() {
 		registerStudent();
+	});
+	$("#studentStartEndDate").daterangepicker({
+		locale: {
+			format: 'YYYY-MM-DD'
+		},
+		singleDatePicker : true
 	});
 });
 

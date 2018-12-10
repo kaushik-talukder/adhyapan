@@ -5,6 +5,13 @@ $(document).ready(function() {
 	$('body').on('click', '#btn-register-teacher', function() {
 		registerTeacher();
 	});
+	
+	$("#teacherStartEndDate").daterangepicker({
+		locale: {
+			format: 'YYYY-MM-DD'
+		},
+		singleDatePicker : true
+	});
 });
 
 function registerTeacher(){

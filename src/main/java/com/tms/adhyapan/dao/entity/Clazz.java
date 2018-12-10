@@ -31,8 +31,6 @@ public class Clazz implements Serializable {
 	private Long teacherId;
 	private Long standardId;
 	private Long centerId;
-	
-	private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
-	private Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+	private Timestamp startDate;
 	private Timestamp endDate;
 }

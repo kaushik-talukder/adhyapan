@@ -1,7 +1,7 @@
 package com.tms.adhyapan.dao.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +31,6 @@ public class Clazz implements Serializable {
 	private Long teacherId;
 	private Long standardId;
 	private Long centerId;
-	private Timestamp startDate;
-	private Timestamp endDate;
+	private Date startDate;
+	private Date endDate;
 }

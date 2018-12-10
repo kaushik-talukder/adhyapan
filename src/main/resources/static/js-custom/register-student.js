@@ -1,7 +1,14 @@
 $(document).ready(function() {
 	populateSchoolDropdown();
+	populateStandardDropdown();
 	$('body').on('click', '#btn-register-student', function() {
 		registerStudent();
+	});
+	$("#studentStartDate").daterangepicker({
+		locale: {
+			format: 'YYYY/MM/DD'
+		},
+		singleDatePicker : true
 	});
 });
 
@@ -15,6 +22,8 @@ function registerStudent(){
 	var guardianContact = $('#guardian-contact').val();
 	var studentContact = $('#student-contact').val();
 	var gender = $('input[name=gender]:checked').val();
+	var standardId = $('#select-standard-dropdown').val();
+	var startDate = new Date($('#studentStartDate').val());
 	$.ajax({
 		method : "POST",
 		url : "registerStudent",
@@ -27,7 +36,9 @@ function registerStudent(){
 			studentContact: studentContact,
 			gender: gender,
 			address: address,
-			schoolId: schoolId
+			schoolId: schoolId,
+			standardId: standardId,
+			startDate: startDate
 		}),
 		dataType : "json",
 		contentType: "application/json"

@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css-lib/dataTables.bootstrap.css"/>
 <link rel="stylesheet" href="css-lib/jquery-ui.min.css"/>
 <link rel="stylesheet" href="css-lib/bootstrap-select.min.css"/>
+<link rel="stylesheet" href="css-lib/daterangepicker.css"/>
 
 <link rel="stylesheet" href="css-custom/common.css">
 
@@ -22,6 +23,8 @@
 <script src="js-lib/dataTables.bootstrap.min.js"></script>
 <script src="js-lib/jquery-ui.min.js"></script>
 <script src="js-lib/bootstrap-select.min.js"></script>
+<script src="js-lib/moment.min.js"></script>
+<script src="js-lib/daterangepicker.min.js"></script>
 
 <script src="js-custom/common.js"></script>
 <script src="js-custom/register-teacher.js"></script>
@@ -66,14 +69,18 @@
 								<input id="teacher-code" class="form-control" type="text" />
 							</div>
 							<div class="col-lg-4">
-								<label class="required">Contact: </label>
-								<input id="teacher-contact" class="form-control" type="text" />
+								<label class="required">Start Date: </label>
+								<input type="text" class="form-control" id="teacherStartDate" />
 							</div>
 						</div>
 						<div class="row row-top-buffer">
-							<div class="col-lg-8">
+							<div class="col-lg-4">
+								<label class="required">Contact: </label>
+								<input id="teacher-contact" class="form-control" type="text" />
+							</div>
+							<div class="col-lg-4">
 								<label>Address: </label>
-								<textarea id="teacher-address" rows="" cols="" class="form-control"></textarea>
+								<input id="teacher-address" class="form-control" type="text" />
 							</div>
 						</div>
 						<div class="row row-top-buffer text-right">

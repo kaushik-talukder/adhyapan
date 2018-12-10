@@ -3,4 +3,10 @@ $(document).ready(function() {
 	populateSubjectDropdown();
 	populateStandardDropdown();
 	populateTeacherDropdown();
+	
+	$("#classStartEndDate").daterangepicker({
+		locale: {
+			format: 'YYYY/MM/DD'
+		}
+	});
 });

@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tms.adhyapan.dao.entity.Teacher;
 import com.tms.adhyapan.dao.repository.TeacherRepository;
+import com.tms.adhyapan.util.CommonUtils;
 
 @Controller
 public class TeacherMgmtController {
@@ -36,6 +37,7 @@ public class TeacherMgmtController {
 	@ResponseBody
 	@RequestMapping(value = "/registerTeacher")
 	public Teacher registerTeacher(@RequestBody Teacher teacher) {
+		teacher.setEndDate(CommonUtils.getDefaultEndDate());
 		Teacher registeredTeacher = teacherRepository.save(teacher);
 		return registeredTeacher;
 	}

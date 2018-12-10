@@ -71,9 +71,7 @@
 						<div class="row">
 							<div class="col-lg-4">
 								<label>Standard: </label>
-								<select class="form-control selectpicker" data-live-search="true" title="Select standard">
-									<option>XII</option>
-								</select>
+								<div th:insert="components/data-component.html :: frag-standard-dropdown"> </div>
 							</div>
 						</div>
 					</div>
@@ -123,7 +121,7 @@
 										<td><span th:text = "${student.id}"></span></td>
 										<td><span th:text = "${student.studentCode}"></span></td>
 										<td><span th:text = "${student.firstName+' '+student.lastName}"></span></td>
-										<td>XII</td>
+										<td><span th:text = "${student.standard}"></td>
 										<td><span th:text = "${student.schoolName}"></span></td>
 									</tr>
 								</tbody>

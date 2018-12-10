@@ -1,7 +1,7 @@
 package com.tms.adhyapan.dao.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +32,6 @@ public class Teacher implements Serializable {
 	private Long subjectId;
 	@Formula(value = "(select s.subject_name from subject s where s.id = subject_id)")
 	private String subjectName;
-	private Timestamp startDate;
-	private Timestamp endDate;
+	private Date startDate;
+	private Date endDate;
 }

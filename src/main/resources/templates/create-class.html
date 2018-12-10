@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css-lib/dataTables.bootstrap.css"/>
 <link rel="stylesheet" href="css-lib/jquery-ui.min.css"/>
 <link rel="stylesheet" href="css-lib/bootstrap-select.min.css"/>
+<link rel="stylesheet" href="css-lib/daterangepicker.css"/>
 
 <link rel="stylesheet" href="css-custom/common.css">
 
@@ -22,6 +23,8 @@
 <script src="js-lib/dataTables.bootstrap.min.js"></script>
 <script src="js-lib/jquery-ui.min.js"></script>
 <script src="js-lib/bootstrap-select.min.js"></script>
+<script src="js-lib/moment.min.js"></script>
+<script src="js-lib/daterangepicker.min.js"></script>
 
 <script src="js-custom/common.js"></script>
 <script src="js-custom/create-class.js"></script>
@@ -60,13 +63,18 @@
 								<div th:insert="components/data-component.html :: frag-subject-dropdown"> </div>
 							</div>
 						</div>
-						
 						<div class="row row-top-buffer">
 							<div class="col-lg-4">
 								<label class="required">Teacher: </label>
 								<div th:insert="components/data-component.html :: frag-teacher-dropdown"> </div>
 							</div>
-							<div class="col-lg-4 text-right">
+							<div class="col-lg-4">
+								<label class="required">Start & End Date: </label>
+								<input type="text" class="form-control" id="classStartEndDate" />
+							</div>
+						</div>
+						<div class="row row-top-buffer">
+							<div class="col-lg-8 text-right">
 								<br/>
 								<button id="btn-create-class" class="btn btn-primary">Create</button>
 							</div>

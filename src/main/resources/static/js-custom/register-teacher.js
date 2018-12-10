@@ -5,6 +5,13 @@ $(document).ready(function() {
 	$('body').on('click', '#btn-register-teacher', function() {
 		registerTeacher();
 	});
+	
+	$("#teacherStartDate").daterangepicker({
+		locale: {
+			format: 'YYYY/MM/DD'
+		},
+		singleDatePicker : true
+	});
 });
 
 function registerTeacher(){
@@ -15,6 +22,7 @@ function registerTeacher(){
 	var teacherCode = $('#teacher-code').val();
 	var teacherContact = $('#teacher-contact').val();
 	var teacherAddress = $('#teacher-address').val();
+	var startDate = new Date($('#teacherStartDate').val());
 	
 	$.ajax({
 		method : "POST",
@@ -26,7 +34,8 @@ function registerTeacher(){
 			contact: teacherContact,
 			address: teacherAddress,
 			schoolId: schoolId,
-			subjectId: subjectId
+			subjectId: subjectId,
+			startDate: startDate
 		}),
 		dataType : "json",
 		contentType: "application/json"

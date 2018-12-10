@@ -1,7 +1,6 @@
 package com.tms.adhyapan.dao.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,6 +19,5 @@ public class Center implements Serializable {
 	private String address;
 	private String spoc;
 	private String contact;
-	private Date createdAt;
-	private Date updatedAt;
+
 }

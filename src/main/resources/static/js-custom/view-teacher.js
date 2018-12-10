@@ -1,9 +1,9 @@
 $(document).ready(function() {
-	populateTeachersList();
+	populateAllTeachers();
 });
 
-function populateTeachersList(){
-	$("#div-all-teachers-display").load('populateTeachersList', {
+function populateAllTeachers(){
+	$("#div-all-teachers-display").load('populateAllTeachers', {
 		pageFragment : 'view-teacher :: frag-all-teachers'
 	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);

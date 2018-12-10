@@ -1,7 +1,6 @@
 package com.tms.adhyapan.dao.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,6 +17,5 @@ public class Standard implements Serializable {
 	private Long id;
 	private String standard;
 	private String description;
-	private Date createdAt;
-	private Date updatedAt;
+
 }

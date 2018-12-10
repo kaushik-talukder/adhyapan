@@ -31,7 +31,7 @@
 
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<header th:insert="header-footer.html :: header"> </header>
+			<header th:insert="components/header-footer.html :: header"> </header>
 
 			<div class="panel entire-height">
 				<div class="panel-body">
@@ -101,9 +101,7 @@
 						<div class="row">
 							<div class="col-lg-4">
 								<label>School: </label>
-								<select id="select-school-dropdown" th:fragment="frag-school-dropdown" class="form-control selectpicker" data-live-search="true" title="Select school">
-									<option class="school-option" th:each="school : ${schoolList}" th:attr="value=${school.id}"><span th:text="${school.schoolCode +' - '+ school.schoolName}"></span></option>
-								</select>
+								<div th:insert="components/data-component.html :: frag-school-dropdown"> </div>
 							</div>
 						</div>
 					</div>
@@ -136,7 +134,7 @@
 				</div>
 			</div>
 
-			<footer th:insert="header-footer.html :: footer"></footer>
+			<footer th:insert="components/header-footer.html :: footer"></footer>
 		</div>
 	</div>
 </body>

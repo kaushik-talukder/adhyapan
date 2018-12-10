@@ -46,8 +46,8 @@ public class TeacherMgmtController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/populateTeachersList")
-	public String populateTeachersList(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
+	@RequestMapping(value = "/populateAllTeachers")
+	public String populateAllTeachers(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
 		List<Teacher> teacherList = teacherRepository.findAll();
 		model.addAttribute("teacherList", teacherList);
 		return pageFragment;

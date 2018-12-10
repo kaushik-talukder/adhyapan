@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css-lib/jquery.dataTables.min.css">
 <link rel="stylesheet" href="css-lib/dataTables.bootstrap.css"/>
 <link rel="stylesheet" href="css-lib/jquery-ui.min.css"/>
+<link rel="stylesheet" href="css-lib/bootstrap-select.min.css"/>
 
 <link rel="stylesheet" href="css-custom/common.css">
 
@@ -20,9 +21,10 @@
 <script src="js-lib/jquery.dataTables.min.js"></script>
 <script src="js-lib/dataTables.bootstrap.min.js"></script>
 <script src="js-lib/jquery-ui.min.js"></script>
+<script src="js-lib/bootstrap-select.min.js"></script>
 
 <script src="js-custom/common.js"></script>
-<script src="js-custom/manage-school.js"></script>
+<script src="js-custom/create-class.js"></script>
 </head>
 
 <body>
@@ -35,44 +37,39 @@
 				<div class="panel-body">
 					<!-- Start your page content -->
 					<div class="panel-heading">
-						<h2>Manage Schools</h2>
+						<h2>Create Class</h2>
 					</div>
 					<div class="panel-body">
-						<h4>Add School</h4>
 						<div class="row">
 							<div class="col-lg-4">
-								<label class="required">School Name: </label>
-								<input id="school-name" class="form-control" type="text" />
+								<label class="required">Class Code: </label>
+								<input id="class-code" class="form-control" type="text" />
 							</div>
 							<div class="col-lg-4">
-								<label class="required">School Code: </label>
-								<input id="school-code" class="form-control" type="text" />
-							</div>
-							<div class="col-lg-4">
-								<label>&nbsp;</label><br/>
-								<button class="btn btn-primary" id="btn-save-school">Save</button>
+								<label class="required">Center: </label>
+								<div th:insert="components/data-component.html :: frag-center-dropdown"> </div>
 							</div>
 						</div>
-					</div>
-					<div class="panel-body">
-						<h4>Existing Schools</h4>
-						<div id="div-all-schools-display">
-							<table id="tab-all-school" th:fragment="frag-all-schools" class="table table-hover" style="width: 100%">
-								<thead>
-									<tr>
-										<th>ID</th>
-										<th>School Name</th>
-										<th>School Code</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="school : ${schoolList}">
-										<td th:text="${school.id}"></td>
-										<td th:text="${school.schoolName}"></td>
-										<td th:text="${school.schoolCode}"></td>
-									</tr>
-								</tbody>
-							</table>
+						<div class="row row-top-buffer">
+							<div class="col-lg-4">
+								<label class="required">Standard: </label><br/>
+								<div th:insert="components/data-component.html :: frag-standard-dropdown"> </div>
+							</div>
+							<div class="col-lg-4">
+								<label class="required">Subject: </label>
+								<div th:insert="components/data-component.html :: frag-subject-dropdown"> </div>
+							</div>
+						</div>
+						
+						<div class="row row-top-buffer">
+							<div class="col-lg-4">
+								<label class="required">Teacher: </label>
+								<div th:insert="components/data-component.html :: frag-teacher-dropdown"> </div>
+							</div>
+							<div class="col-lg-4 text-right">
+								<br/>
+								<button id="btn-create-class" class="btn btn-primary">Create</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -82,8 +79,8 @@
 		</div>
 	</div>
 
-	<div class="modal-popup" id="save-school-dialog-message" title="Add School">
-		<p>School added successfully</p>
+	<div class="modal-popup" id="create-class-dialog-message" title="Create Class">
+		<p>Class created successfully</p>
 	</div>
 	
 </body>

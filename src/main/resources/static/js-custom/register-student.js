@@ -5,15 +5,6 @@ $(document).ready(function() {
 	});
 });
 
-function populateSchoolDropdown(){
-	$("#select-school-dropdown").load('populateAllSchools', {
-		pageFragment : 'register-student :: frag-school-dropdown'
-	}, function(response, status, xhr) {
-		thymeleafFragmentResponseCheck(response);
-		$('#select-school-dropdown').selectpicker('refresh');
-	});
-}
-
 function registerStudent(){
 	var firstName = $('#first-name').val();
 	var lastName = $('#last-name').val();

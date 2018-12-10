@@ -32,7 +32,6 @@ public class Teacher implements Serializable {
 	private Long subjectId;
 	@Formula(value = "(select s.subject_name from subject s where s.id = subject_id)")
 	private String subjectName;
-	private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
-	private Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+	private Timestamp startDate;
 	private Timestamp endDate;
 }

@@ -1,7 +1,6 @@
 package com.tms.adhyapan.dao.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +20,5 @@ public class Subject implements Serializable {
 	private Long id;
 	private String subjectName;
 	private String subjectCode;
-	private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
-	private Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+
 }

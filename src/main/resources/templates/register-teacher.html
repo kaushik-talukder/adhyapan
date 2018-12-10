@@ -31,7 +31,7 @@
 
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<header th:insert="header-footer.html :: header"> </header>
+			<header th:insert="component/header-footer.html :: header"> </header>
 
 			<div class="panel entire-height">
 				<div class="panel-body">
@@ -53,15 +53,11 @@
 						<div class="row row-top-buffer">
 							<div class="col-lg-4">
 								<label class="required">School: </label>
-								<select id="select-school-dropdown" th:fragment="frag-school-dropdown" class="form-control selectpicker" data-live-search="true" title="Select a school">
-									<option th:each="school : ${schoolList}" th:attr="value=${school.id}"><span th:text="${school.schoolCode +' - '+ school.schoolName}"></span></option>
-								</select>
+								<div th:insert="component/data-component.html :: frag-school-dropdown"> </div>
 							</div>
 							<div class="col-lg-4">
 								<label class="required">Subject: </label>
-								<select id="select-subject-dropdown" th:fragment="frag-subject-dropdown" class="form-control selectpicker" data-live-search="true" title="Select a subject">
-									<option th:each="subject : ${subjectList}" th:attr="value=${subject.id}"><span th:text="${subject.subjectCode +' - '+ subject.subjectName}"></span></option>
-								</select>
+								<div th:insert="component/data-component.html :: frag-subject-dropdown"> </div>
 							</div>
 						</div>
 						<div class="row row-top-buffer">
@@ -89,7 +85,7 @@
 				</div>
 			</div>
 
-			<footer th:insert="header-footer.html :: footer"></footer>
+			<footer th:insert="component/header-footer.html :: footer"></footer>
 		</div>
 	</div>
 

@@ -52,12 +52,3 @@ function getStudentList(searchCategory, searchKey) {
 		$("#div-student-display-table").removeClass("no-display");
 	});
 }
-
-function populateSchoolDropdown(){
-	$("#select-school-dropdown").load('populateAllSchools', {
-		pageFragment : 'view-student :: frag-school-dropdown'
-	}, function(response, status, xhr) {
-		thymeleafFragmentResponseCheck(response);
-		$('#select-school-dropdown').selectpicker('refresh');
-	});
-}

@@ -1,0 +1,7 @@
+<select id="select-school-dropdown" th:fragment="frag-school-dropdown" class="form-control selectpicker" data-live-search="true" title="Select school">
+	<option class="school-option" th:each="school : ${schoolList}" th:attr="value=${school.id}"><span th:text="${school.schoolCode +' - '+ school.schoolName}"></span></option>
+</select>
+
+<select id="select-subject-dropdown" th:fragment="frag-subject-dropdown" class="form-control selectpicker" data-live-search="true" title="Select a subject">
+	<option th:each="subject : ${subjectList}" th:attr="value=${subject.id}"><span th:text="${subject.subjectCode +' - '+ subject.subjectName}"></span></option>
+</select>

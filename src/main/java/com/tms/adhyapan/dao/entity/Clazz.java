@@ -11,6 +11,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Formula;
 
+import com.tms.adhyapan.util.CommonConstants;
+import com.tms.adhyapan.util.CommonUtils;
+
 import lombok.Data;
 
 @Entity
@@ -31,6 +34,7 @@ public class Clazz implements Serializable {
 	private Long teacherId;
 	private Long standardId;
 	private Long centerId;
-	private Date startDate;
-	private Date endDate;
+	private Date startDate = CommonUtils.getDefaultStartDate();
+	private Date endDate = CommonUtils.getDefaultEndDate();
+	private String isActive = CommonConstants.ACTIVE_YES;
 }

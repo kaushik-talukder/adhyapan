@@ -60,4 +60,5 @@ function resetForm(){
 	$('#teacher-code').val('');
 	$('#teacher-contact').val('');
 	$('#teacher-address').val('');
+	$("#teacherStartDate").data('daterangepicker').setStartDate(moment().format('YYYY/MM/DD'));
 }

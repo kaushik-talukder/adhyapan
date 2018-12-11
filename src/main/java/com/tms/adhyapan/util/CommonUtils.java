@@ -26,4 +26,8 @@ public class CommonUtils {
 		}
 		return endDate;
 	}
+	
+	public static Date getDefaultStartDate() {
+		return new Date(System.currentTimeMillis());
+	}
 }

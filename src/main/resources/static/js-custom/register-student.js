@@ -59,10 +59,12 @@ function resetForm() {
 	$('#first-name').val('');
 	$('#last-name').val('');
 	$('#student-code').val('');
-	$('#select-school-dropdown').val('').selectpicker('refresh');;
+	$('#select-school-dropdown').val('').selectpicker('refresh');
+	$('#select-standard-dropdown').val('').selectpicker('refresh');
 	$('#guardian-name').val('');
 	$('#address').val('');
 	$('#guardian-contact').val('');
 	$('#student-contact').val('');
 	$('input[name="gender"]').prop('checked', false);
+	$("#studentStartDate").data('daterangepicker').setStartDate(moment().format('YYYY/MM/DD'));
 }

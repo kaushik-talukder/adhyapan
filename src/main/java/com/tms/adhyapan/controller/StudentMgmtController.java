@@ -39,7 +39,6 @@ public class StudentMgmtController {
 	@ResponseBody
 	@RequestMapping(value = "/registerStudent")
 	public Student registerStudent(@RequestBody Student student) {
-		student.setEndDate(CommonUtils.getDefaultEndDate());
 		Student registeredStudent = studentRepository.save(student);
 		return registeredStudent;
 	}

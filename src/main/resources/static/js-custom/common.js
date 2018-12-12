@@ -40,11 +40,24 @@ function populateCenterDropdown(){
 	});
 }
 
-function populateTeacherDropdown(){
+function populateTeacherDropdown(subjectId){
 	$("#select-teacher-dropdown").load('populateAllTeachers', {
-		pageFragment : 'components/data-component.html :: frag-teacher-dropdown'
+		pageFragment : 'components/data-component.html :: frag-teacher-dropdown',
+		subjectId : subjectId
 	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);
 		$('#select-teacher-dropdown').selectpicker('refresh');
+	});
+}
+
+function populateClassDropdown(standardId, subjectId, teacherId){
+	$("#select-class-dropdown").load('populateAllClasses', {
+		pageFragment : 'components/data-component.html :: frag-class-dropdown',
+		standardId : standardId,
+		subjectId : subjectId,
+		teacherId : teacherId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-class-dropdown').selectpicker('refresh');
 	});
 }

@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.Formula;
-
 import com.tms.adhyapan.util.CommonConstants;
 import com.tms.adhyapan.util.CommonUtils;
 
@@ -17,24 +15,15 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Teacher implements Serializable {
+public class StudentClass implements Serializable {
 
-	private static final long serialVersionUID = 4569152174501395948L;
+	private static final long serialVersionUID = 894575941590867247L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String firstName;
-	private String lastName;
-	private String teacherCode;
-	private String contact;
-	private String address;
-	private Long schoolId;
-	@Formula(value = "(select s.school_name from school s where s.id = school_id)")
-	private String schoolName;
-	private Long subjectId;
-	@Formula(value = "(select s.subject_name from subject s where s.id = subject_id)")
-	private String subjectName;
+	private Long classId;
+	private Long studentId;
 	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
 	private String isActive = CommonConstants.ACTIVE_YES;

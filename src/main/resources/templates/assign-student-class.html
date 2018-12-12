@@ -67,16 +67,13 @@
 								<div class="div-border-gray">
 									<ul class="no-ul-style" id="li-assigned-students" th:fragment="frag-assigned-students">
 										<li th:if="${assignedStudentList != null}" th:each = "student : ${assignedStudentList}">
-											<input type="checkbox" />
+											<input type="checkbox" class="chk-assigned-students" th:attr="value=${student.id}" />
 											<span th:text="${student.firstName +' '+ student.lastName}"></span>
-										</li>
-										<li th:if="${assignedStudentList == null}">
-											<p>Select class to get students</p>
 										</li>
 									</ul>
 								</div>
 								<div class="text-right row-top-buffer">
-									<button class="btn btn-primary">Remove Selected</button>
+									<button id="btn-remove-student-from-class" class="btn btn-primary">Remove Selected</button>
 								</div>
 							</div>
 							<div class="col-lg-4">
@@ -84,16 +81,13 @@
 								<div class="div-border-gray">
 									<ul class="no-ul-style" id="li-available-students-to-assign" th:fragment="frag-available-students-to-assign">
 										<li th:if="${availableStudentList != null}" th:each = "student : ${availableStudentList}">
-											<input type="checkbox" />
+											<input type="checkbox" class="chk-available-students" th:attr="value=${student.id}" />
 											<span th:text="${student.firstName +' '+ student.lastName}"></span>
-										</li>
-										<li th:if="${availableStudentList == null}">
-											<p>Select class to get students</p>
 										</li>
 									</ul>
 								</div>
 								<div class="text-right row-top-buffer">
-									<button class="btn btn-primary">Add Selected</button>
+									<button id="btn-assign-student-to-class" class="btn btn-primary">Add Selected</button>
 								</div>
 							</div>
 						</div>
@@ -103,6 +97,14 @@
 
 			<footer th:insert="components/header-footer.html :: footer"></footer>
 		</div>
+	</div>
+	
+	<div class="modal-popup" id="assign-student-dialog-message" title="Create Class">
+		<p>Students assigned to the class successfully</p>
+	</div>
+	
+	<div class="modal-popup" id="remove-student-dialog-message" title="Create Class">
+		<p>Students removed from the class successfully</p>
 	</div>
 </body>
 </html>

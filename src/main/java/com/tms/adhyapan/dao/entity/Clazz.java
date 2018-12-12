@@ -44,7 +44,7 @@ public class Clazz implements Serializable {
 	@Formula(value = "(select stnd.standard from standard stnd where stnd.id = standard_id)")
 	private String standard; 
 	
-	private Date startDate = CommonUtils.getDefaultStartDate();
+	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
 	private String isActive = CommonConstants.ACTIVE_YES;
 }

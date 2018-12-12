@@ -1,9 +1,11 @@
 package com.tms.adhyapan.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tms.adhyapan.dao.entity.Clazz;
 import com.tms.adhyapan.dao.entity.Student;
+import com.tms.adhyapan.dao.entity.StudentClass;
 import com.tms.adhyapan.dao.repository.ClassRepository;
+import com.tms.adhyapan.dao.repository.StudentClassRepository;
 import com.tms.adhyapan.dao.repository.StudentRepository;
+import com.tms.adhyapan.util.CommonUtils;
 
 @Controller
 public class ClassMgmtController {
@@ -30,6 +35,8 @@ public class ClassMgmtController {
 	private ClassRepository classRepository;
 	@Autowired
 	private StudentRepository studentRepository;
+	@Autowired
+	private StudentClassRepository studentClassRepository;
 
 	@RequestMapping(value = "/createClassLandingPage")
 	public ModelAndView createClassLandingPage(HttpServletRequest request) {
@@ -86,8 +93,8 @@ public class ClassMgmtController {
 
 	@RequestMapping(value = "/getAvailableStudentsToAssignClass")
 	public String getAvailableStudentsToAssignClass(Model model,
-			@RequestParam(value = "pageFragment") String pageFragment, @RequestParam(value = "classId") Long classId) {
-		List<Student> availableStudentList = studentRepository.findAll();
+			@RequestParam(value = "pageFragment") String pageFragment, @RequestParam(value = "standardId") Long standardId, @RequestParam(value = "classId") Long classId) {
+		List<Student> availableStudentList = studentRepository.getAvailableStudentsToAssignByClassId(standardId, classId);
 		model.addAttribute("availableStudentList", availableStudentList);
 		return pageFragment;
 	}
@@ -95,8 +102,25 @@ public class ClassMgmtController {
 	@RequestMapping(value = "/getAssignedStudentsToClass")
 	public String getAssignedStudentsToClass(Model model, @RequestParam(value = "pageFragment") String pageFragment,
 			@RequestParam(value = "classId") Long classId) {
-		List<Student> assignedStudentList = studentRepository.findAll();
+		List<Student> assignedStudentList = studentRepository.getAssignedStudentsByClassId(classId);
 		model.addAttribute("assignedStudentList", assignedStudentList);
 		return pageFragment;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/assignStudentsToClass")
+	public List<StudentClass> assignStudentsToClass(@RequestBody List<StudentClass> studentClassList) {
+		List<StudentClass> savedStudentClassList = studentClassRepository.saveAll(studentClassList);
+		return savedStudentClassList;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/removeStudentsFromClass")
+	@Transactional
+	public Integer removeStudentsFromClass(@RequestParam(value = "classId") Long classId,
+			@RequestParam(value = "studentList[]", required = false) List<Long> studentList) {
+		Date endDate = CommonUtils.getCurrentSystemDate();
+		Integer updateCount = studentClassRepository.removeStudentsFromClass(endDate, classId, studentList);
+		return updateCount;
 	}
 }

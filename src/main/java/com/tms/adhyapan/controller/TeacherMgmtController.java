@@ -1,6 +1,7 @@
 package com.tms.adhyapan.controller;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -47,8 +48,13 @@ public class TeacherMgmtController {
 	}
 	
 	@RequestMapping(value = "/populateAllTeachers")
-	public String populateAllTeachers(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
-		List<Teacher> teacherList = teacherRepository.findAll();
+	public String populateAllTeachers(Model model, @RequestParam(value = "pageFragment") String pageFragment, @RequestParam(value = "subjectId", required = false) Long subjectId) {
+		List<Teacher> teacherList = null;
+		if(Objects.nonNull(subjectId)) {
+			teacherList = teacherRepository.findBySubjectId(subjectId);
+		} else {
+			teacherList = teacherRepository.findAll();
+		}
 		model.addAttribute("teacherList", teacherList);
 		return pageFragment;
 	}

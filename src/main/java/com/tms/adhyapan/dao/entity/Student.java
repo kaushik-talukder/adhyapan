@@ -38,7 +38,7 @@ public class Student implements Serializable {
 	private String guardianContact;
 	private String address;
 	private String gender;
-	private Date startDate = CommonUtils.getDefaultStartDate();
+	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
 	private String isActive = CommonConstants.ACTIVE_YES;
 }

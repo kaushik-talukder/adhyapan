@@ -27,7 +27,7 @@ public class CommonUtils {
 		return endDate;
 	}
 	
-	public static Date getDefaultStartDate() {
+	public static Date getCurrentSystemDate() {
 		return new Date(System.currentTimeMillis());
 	}
 }

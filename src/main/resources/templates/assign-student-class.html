@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="images/logo.PNG" />
+<title>Adhyapan</title>
+
+<link rel="stylesheet" href="css-lib/bootstrap.min.css">
+<link rel="stylesheet" href="css-lib/jquery.dataTables.min.css">
+<link rel="stylesheet" href="css-lib/dataTables.bootstrap.css"/>
+<link rel="stylesheet" href="css-lib/jquery-ui.min.css"/>
+<link rel="stylesheet" href="css-lib/bootstrap-select.min.css"/>
+
+<link rel="stylesheet" href="css-custom/common.css">
+
+<script src="js-lib/jquery.min.js"></script>
+<script src="js-lib/bootstrap.min.js"></script>
+<script src="js-lib/jquery.dataTables.min.js"></script>
+<script src="js-lib/dataTables.bootstrap.min.js"></script>
+<script src="js-lib/jquery-ui.min.js"></script>
+<script src="js-lib/bootstrap-select.min.js"></script>
+
+<script src="js-custom/common.js"></script>
+<script src="js-custom/assign-student-class.js"></script>
+</head>
+
+<body>
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<header th:insert="components/header-footer.html :: header"> </header>
+
+			<div class="panel entire-height">
+				<div class="panel-body">
+					<!-- Start your page content -->
+					<div class="panel-heading">
+						<h2>Assign Students</h2>
+					</div>
+					
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-2">
+								<label>Standard</label>
+								<div th:insert="components/data-component.html :: frag-standard-dropdown"> </div>
+							</div>
+						
+							<div class="col-lg-2">
+								<label>Subject</label>
+								<div th:insert="components/data-component.html :: frag-subject-dropdown"> </div>
+							</div>
+							
+							<div class="col-lg-2">
+								<label>Teacher</label>
+								<div th:insert="components/data-component.html :: frag-teacher-dropdown"> </div>
+							</div>
+							<div class="col-lg-2">
+								<label>Class</label>
+								<div th:insert="components/data-component.html :: frag-class-dropdown"> </div>
+							</div>
+						</div>
+						<div class="row row-top-buffer">
+							<div class="col-lg-4">
+								<h4>Already assigned Students</h4>
+								<div class="div-border-gray">
+									<ul class="no-ul-style" id="li-assigned-students" th:fragment="frag-assigned-students">
+										<li th:if="${assignedStudentList != null}" th:each = "student : ${assignedStudentList}">
+											<input type="checkbox" class="chk-assigned-students" th:attr="value=${student.id}" />
+											<span th:text="${student.firstName +' '+ student.lastName}"></span>
+										</li>
+									</ul>
+								</div>
+								<div class="text-right row-top-buffer">
+									<button id="btn-remove-student-from-class" class="btn btn-primary">Remove Selected</button>
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<h4>Available students to assign</h4>
+								<div class="div-border-gray">
+									<ul class="no-ul-style" id="li-available-students-to-assign" th:fragment="frag-available-students-to-assign">
+										<li th:if="${availableStudentList != null}" th:each = "student : ${availableStudentList}">
+											<input type="checkbox" class="chk-available-students" th:attr="value=${student.id}" />
+											<span th:text="${student.firstName +' '+ student.lastName}"></span>
+										</li>
+									</ul>
+								</div>
+								<div class="text-right row-top-buffer">
+									<button id="btn-assign-student-to-class" class="btn btn-primary">Add Selected</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer th:insert="components/header-footer.html :: footer"></footer>
+		</div>
+	</div>
+	
+	<div class="modal-popup" id="assign-student-dialog-message" title="Create Class">
+		<p>Students assigned to the class successfully</p>
+	</div>
+	
+	<div class="modal-popup" id="remove-student-dialog-message" title="Create Class">
+		<p>Students removed from the class successfully</p>
+	</div>
+</body>
+</html>

@@ -2,7 +2,11 @@ $(document).ready(function() {
 	populateCenterDropdown();
 	populateSubjectDropdown();
 	populateStandardDropdown();
-	populateTeacherDropdown();
+	
+	$("body").on("click", ".subject-option", function() {
+		var subjectId = $("#select-subject-dropdown").val();
+		populateTeacherDropdown(subjectId);
+	});
 	
 	$("#classStartDate").daterangepicker({
 		locale: {

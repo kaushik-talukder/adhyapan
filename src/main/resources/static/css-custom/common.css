@@ -18,3 +18,17 @@ label.required:after {
 .padding-right-15{
 	padding-right:15px; 
 }
+
+.div-border-gray{
+	border: 1px solid #CCC;
+	padding: 10px;
+	border-radius: 4px;
+	min-height: 300px;
+	max-height: 300px;
+	overflow: auto;
+}
+
+.no-ul-style{
+	list-style-type:none;
+	padding: 0px;
+}

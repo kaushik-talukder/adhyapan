@@ -12,6 +12,7 @@ public class CommonConstants {
 	public static final String SEARCH_CATEGORY_BY_STANDARD = "byStandard";
 	public static final String SEARCH_CATEGORY_BY_SCHOOL = "bySchool";
 	
-	public static final String DEFAULT_END_DATE = "3000-12-31";
-	public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
+	public static final String END_DATE_DEFAULT = "3000-12-31";
+	public static final String DATE_FORMAT_DEFAULT = "yyyy-MM-dd";
+	public static final String DATE_FORMAT_YYYYMMM = "yyyy-MMM";
 }

@@ -14,6 +14,7 @@ $(document).ready(function() {
 	$('body').on('click', '.class-option', function() {
 		var classId = $("#select-class-dropdown").val();
 		populateClassFee(classId);
+		populateClassMonthDropdown(classId);
 		populateStudentDropdown(null,classId);
 	});
 });

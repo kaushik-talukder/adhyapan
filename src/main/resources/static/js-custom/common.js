@@ -72,3 +72,13 @@ function populateStudentDropdown(standardId, classId){
 		$('#select-student-dropdown').selectpicker('refresh');
 	});
 }
+
+function populateClassMonthDropdown(classId){
+	$("#select-class-month-dropdown").load('populateClassMonth', {
+		pageFragment : 'components/data-component.html :: frag-class-month-dropdown',
+		classId : classId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-class-month-dropdown').selectpicker('refresh');
+	});
+}

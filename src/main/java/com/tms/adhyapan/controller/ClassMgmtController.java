@@ -131,4 +131,13 @@ public class ClassMgmtController {
 		fee = classRepository.getClassFee(classId);
 		return fee;
 	}
+	
+	@RequestMapping(value = "/populateClassMonth")
+	public String populateClassMonth(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+			@RequestParam(value = "classId") Long classId) {
+		Clazz clazz = classRepository.findById(classId).get();
+		List<String> monthList = CommonUtils.getMonthList(clazz.getStartDate(), clazz.getEndDate());
+		model.addAttribute("monthList", monthList);
+		return pageFragment;
+	}
 }

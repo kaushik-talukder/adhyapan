@@ -26,6 +26,6 @@
 	<option class="student-option" th:each="student : ${studentList}" th:attr="value=${student.id}"><span th:text="${student.firstName +' '+ student.lastName}"></span></option>
 </select>
 
-<select id="select-class-month-dropdown" th:fragment="frag-class-month-dropdown" class="form-control selectpicker" data-live-search="true" title="Select month">
+<select id="select-class-month-dropdown" th:fragment="frag-class-month-dropdown" class="form-control selectpicker" data-live-search="true" multiple="multiple" title="Select month">
 	<option class="class-month-option" th:each="month : ${monthList}" th:attr="value=${month}"><span th:text="${month}"></span></option>
 </select>

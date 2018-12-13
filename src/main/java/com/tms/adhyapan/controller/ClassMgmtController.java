@@ -123,4 +123,12 @@ public class ClassMgmtController {
 		Integer updateCount = studentClassRepository.removeStudentsFromClass(endDate, classId, studentList);
 		return updateCount;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/populateClassFee")
+	public Long populateClassFee(@RequestParam(value = "classId") Long classId) {
+		Long fee = 0L;
+		fee = classRepository.getClassFee(classId);
+		return fee;
+	}
 }

@@ -2,6 +2,7 @@ package com.tms.adhyapan.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -79,5 +80,23 @@ public class StudentMgmtController {
 		}
 		model.addAttribute("studentList", studentList);
 		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/populateStudents")
+	public String populateStudents(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+			@RequestParam(value = "standardId") Long standardId,
+			@RequestParam(value = "classId") Long classId) {
+		List<Student> studentList = null;
+		
+		if(Objects.nonNull(standardId) && Objects.nonNull(classId)) {
+			
+		} else if(Objects.nonNull(standardId)) {
+			
+		} else if(Objects.nonNull(classId)) {
+			studentList = studentRepository.getStudentsByClassId(classId);
+		}
+		model.addAttribute("studentList", studentList);
+		return pageFragment;
+		
 	}
 }

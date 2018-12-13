@@ -43,6 +43,7 @@ public class Clazz implements Serializable {
 	private Long standardId;
 	@Formula(value = "(select stnd.standard from standard stnd where stnd.id = standard_id)")
 	private String standard; 
+	private Long fee;
 	
 	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();

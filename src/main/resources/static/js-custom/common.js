@@ -61,3 +61,14 @@ function populateClassDropdown(standardId, subjectId, teacherId){
 		$('#select-class-dropdown').selectpicker('refresh');
 	});
 }
+
+function populateStudentDropdown(standardId, classId){
+	$("#select-student-dropdown").load('populateStudents', {
+		pageFragment : 'components/data-component.html :: frag-student-dropdown',
+		standardId : standardId,
+		classId : classId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-student-dropdown').selectpicker('refresh');
+	});
+}

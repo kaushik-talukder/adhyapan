@@ -21,9 +21,14 @@ $(document).ready(function() {
 		populateClassMonthDropdown(classId);
 		populateClassFee(classId);
 	});
-	$('body').on('click', '.class-month-option', function() {
-		var classId = $("#select-class-dropdown").val();
-		populateClassFee(classId);
+	$('body').on('change', '#select-class-month-dropdown', function() {
+		var monthCode = $("#select-class-month-dropdown").val();
+		var feePerMonth = $("#fee-per-month").val();
+		if(monthCode.length > 0){
+			$("#total-fee-amount").val(feePerMonth * monthCode.length);
+		} else {
+			$("#total-fee-amount").val(0);
+		}
 	});
 	$('body').on('click', '#btn-save-tution-fee', function() {
 		$("#tution-fee-confirm-message").dialog({
@@ -50,7 +55,7 @@ function populateClassFee(classId){
 		},
 		dataType : "json"
 	}).done(function(response) {
-		$("#total-fee-amount").val(response);
+		$("#fee-per-month").val(response);
 	});
 }
 
@@ -105,6 +110,6 @@ function resetForm(){
 	$("#select-class-dropdown").val('').selectpicker('refresh');
 	$("#select-student-dropdown").val('').selectpicker('refresh');
 	$("#select-class-month-dropdown").val('').selectpicker('refresh');
-	$("#total-fee-amount").val("");
+	$("#total-fee-amount").val(0);
 	$("#remarks").val("");
 }

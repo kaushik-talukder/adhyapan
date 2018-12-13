@@ -69,7 +69,7 @@
 							</div>
 							<div class="col-lg-2">
 								<label class="required">Total Fee: </label>
-								<input type="number" id="total-fee-amount" class="form-control" />
+								<input type="number" id="total-fee-amount" value="0" class="form-control" />
 							</div>
 							<div class="col-lg-4">
 								<label class="required">Remark: </label>
@@ -90,6 +90,7 @@
 		</div>
 	</div>
 	<input type="hidden" id="fee-category-id" th:attr = "value = ${feeCategoryId}" />
+	<input type="hidden" id="fee-per-month" value="" />
 	<div class="modal-popup" id="tution-fee-dialog-message" title="Tution Fee">
 		<p>Record saved successfully</p>
 	</div>

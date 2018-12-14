@@ -41,7 +41,7 @@ function populateCenterDropdown(){
 }
 
 function populateTeacherDropdown(subjectId){
-	$("#select-teacher-dropdown").load('populateAllTeachers', {
+	$("#select-teacher-dropdown").load('populateActiveTeachers', {
 		pageFragment : 'components/data-component.html :: frag-teacher-dropdown',
 		subjectId : subjectId
 	}, function(response, status, xhr) {

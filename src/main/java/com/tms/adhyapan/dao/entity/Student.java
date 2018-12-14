@@ -7,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Formula;
 
+import com.tms.adhyapan.util.CommonConstants;
 import com.tms.adhyapan.util.CommonUtils;
 
 import lombok.Data;
@@ -39,4 +41,15 @@ public class Student implements Serializable {
 	private String gender;
 	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
+	
+	@Transient
+	private String activeFlag;
+	
+	public String getActiveFlag() {
+		String flag = CommonConstants.ACTIVE_NO; 
+		if(endDate.after(CommonUtils.getCurrentSystemDate())) {
+			flag = CommonConstants.ACTIVE_YES;
+		}
+		return flag;
+	}
 }

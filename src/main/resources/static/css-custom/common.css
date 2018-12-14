@@ -36,3 +36,7 @@ label.required:after {
 	list-style-type:none;
 	padding: 0px;
 }
+
+.red-text{
+	color: red;
+}

@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.tms.adhyapan.util.CommonConstants;
 import com.tms.adhyapan.util.CommonUtils;
 
 import lombok.Data;
@@ -26,5 +25,4 @@ public class StudentClass implements Serializable {
 	private Long studentId;
 	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
-	private String isActive = CommonConstants.ACTIVE_YES;
 }

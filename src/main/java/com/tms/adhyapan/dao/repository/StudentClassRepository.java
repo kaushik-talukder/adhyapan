@@ -12,6 +12,6 @@ import com.tms.adhyapan.dao.entity.StudentClass;
 public interface StudentClassRepository extends JpaRepository<StudentClass, Long> {
 	
 	@Modifying
-	@Query(value = "update StudentClass sc set sc.endDate = ?1, sc.isActive = 'N' where sc.classId = ?2 and sc.studentId in (?3)")
+	@Query(value = "update StudentClass sc set sc.endDate = ?1 where sc.classId = ?2 and sc.studentId in (?3)")
 	Integer removeStudentsFromClass(Date endDate, Long classId, List<Long> studentList);
 }

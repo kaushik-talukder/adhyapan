@@ -10,7 +10,6 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.Formula;
 
-import com.tms.adhyapan.util.CommonConstants;
 import com.tms.adhyapan.util.CommonUtils;
 
 import lombok.Data;
@@ -37,5 +36,4 @@ public class Teacher implements Serializable {
 	private String subjectName;
 	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
-	private String isActive = CommonConstants.ACTIVE_YES;
 }

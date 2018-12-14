@@ -15,13 +15,26 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 	List<Student> findBySchoolIdOrderByFirstName(Long key);
 	List<Student> findByStandardIdOrderByFirstName(Long key);
 	
-	@Query(value = "select s from Student s, StudentClass sc where s.id = sc.studentId and sc.classId = ?1 and sc.isActive = 'Y'")
+	@Query(value = "select s from Student s, StudentClass sc"
+			+ " where s.id = sc.studentId"
+			+ " and sc.classId = ?1"
+			+ " and s.endDate > sysdate()"
+			+ " and sc.endDate > sysdate()")
 	List<Student> getAssignedStudentsByClassId(Long classId);
 	
-	@Query(value = "select s from Student s where s.standardId = ?1 and s.isActive = 'Y' and s.id not in (select sc.studentId from StudentClass sc where sc.classId = ?2 and sc.isActive = 'Y')")
+	@Query(value = "select s from Student s"
+			+ " where s.standardId = ?1"
+			+ " and s.endDate > sysdate()"
+			+ " and s.id not in (select sc.studentId from StudentClass sc where sc.classId = ?2 and sc.endDate > sysdate())")
 	List<Student> getAvailableStudentsToAssignByClassId(Long standardId, Long classId);
 	
-	@Query(value = "select s from Student s, Clazz c, StudentClass sc where s.id = sc.studentId and sc.classId = c.id and c.id=?1 and s.isActive='Y' and c.isActive = 'Y' and sc.isActive = 'Y'")
+	@Query(value = "select s from Student s, Clazz c, StudentClass sc"
+			+ " where s.id = sc.studentId"
+			+ " and sc.classId = c.id"
+			+ " and c.id=?1"
+			+ " and s.endDate > sysdate()"
+			+ " and c.endDate > sysdate()"
+			+ " and sc.endDate > sysdate()")
 	List<Student> getStudentsByClassId(Long classId);
 }
 

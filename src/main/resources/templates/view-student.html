@@ -115,7 +115,6 @@
 										<th>Standard</th>
 										<th>School</th>
 										<th>Start End</th>
-										<th>Active</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -126,7 +125,6 @@
 										<td><span th:text = "${student.standard}"></td>
 										<td><span th:text = "${student.schoolName}"></span></td>
 										<td><span th:text="${#dates.format(student.startDate, 'yyyy/MM/dd') +' - '+ #dates.format(student.endDate, 'yyyy/MM/dd')}"></span></td>
-										<td><span th:text="${student.isActive}"></span></td>
 									</tr>
 								</tbody>
 							</table>

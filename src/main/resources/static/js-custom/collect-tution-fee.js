@@ -30,7 +30,8 @@ $(document).ready(function() {
 			$("#total-fee-amount").val(0);
 		}
 	});
-	$('body').on('click', '#btn-save-tution-fee', function() {
+	$('body').on('submit', '#tution-fee-form', function(e) {
+		e.preventDefault();
 		$("#tution-fee-confirm-message").dialog({
 			modal : true,
 			buttons : {

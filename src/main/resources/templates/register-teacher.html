@@ -43,47 +43,49 @@
 						<h2>Register Teacher</h2>
 					</div>
 					<div class="panel-body">
-						<div class="row">
-							<div class="col-lg-4">
-								<label class="required">First Name: </label>
-								<input id="first-name" class="form-control" type="text" />
+						<form id="reg-teacher-form" action="javascript:void(0);">
+							<div class="row">
+								<div class="col-lg-4">
+									<label class="required">First Name: </label>
+									<input required="required" id="first-name" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label class="required">Last Name: </label>
+									<input required="required" id="last-name" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label class="required">Teacher Code: </label>
+									<input required="required" id="teacher-code" class="form-control" type="text" />
+								</div>
 							</div>
-							<div class="col-lg-4">
-								<label class="required">Last Name: </label>
-								<input id="last-name" class="form-control" type="text" />
+							<div class="row row-top-buffer">
+								<div class="col-lg-2">
+									<label class="required">School: </label>
+									<div th:insert="components/data-component.html :: frag-school-dropdown"> </div>
+								</div>
+								<div class="col-lg-2">
+									<label class="required">Subject: </label>
+									<div th:insert="components/data-component.html :: frag-subject-dropdown"> </div>
+								</div>
+								<div class="col-lg-2">
+									<label class="required">Start Date: </label>
+									<input required="required" type="text" class="form-control" readonly="readonly" id="teacherStartDate" />
+								</div>
+								<div class="col-lg-2">
+									<label class="required">Contact: </label>
+									<input required="required" id="teacher-contact" class="form-control" type="number" />
+								</div>
+								<div class="col-lg-4">
+									<label>Address: </label>
+									<input id="teacher-address" class="form-control" type="text" />
+								</div>
 							</div>
-							<div class="col-lg-4">
-								<label class="required">Teacher Code: </label>
-								<input id="teacher-code" class="form-control" type="text" />
+							<div class="row row-top-buffer text-center">
+								<div class="col-lg-12">
+									<button id="btn-register-teacher" class="btn btn-primary">Register</button>
+								</div>
 							</div>
-						</div>
-						<div class="row row-top-buffer">
-							<div class="col-lg-2">
-								<label class="required">School: </label>
-								<div th:insert="components/data-component.html :: frag-school-dropdown"> </div>
-							</div>
-							<div class="col-lg-2">
-								<label class="required">Subject: </label>
-								<div th:insert="components/data-component.html :: frag-subject-dropdown"> </div>
-							</div>
-							<div class="col-lg-2">
-								<label class="required">Start Date: </label>
-								<input type="text" class="form-control" readonly="readonly" id="teacherStartDate" />
-							</div>
-							<div class="col-lg-2">
-								<label class="required">Contact: </label>
-								<input id="teacher-contact" class="form-control" type="number" />
-							</div>
-							<div class="col-lg-4">
-								<label>Address: </label>
-								<input id="teacher-address" class="form-control" type="text" />
-							</div>
-						</div>
-						<div class="row row-top-buffer text-center">
-							<div class="col-lg-12">
-								<button id="btn-register-teacher" class="btn btn-primary">Register</button>
-							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Formula;
 
@@ -37,5 +38,15 @@ public class Teacher implements Serializable {
 	private String subjectName;
 	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
-	private String isActive = CommonConstants.ACTIVE_YES;
+	
+	@Transient
+	private String activeFlag;
+	
+	public String getActiveFlag() {
+		String flag = CommonConstants.ACTIVE_NO; 
+		if(endDate.after(CommonUtils.getCurrentSystemDate())) {
+			flag = CommonConstants.ACTIVE_YES;
+		}
+		return flag;
+	}
 }

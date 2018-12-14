@@ -41,7 +41,7 @@ function populateCenterDropdown(){
 }
 
 function populateTeacherDropdown(subjectId){
-	$("#select-teacher-dropdown").load('populateAllTeachers', {
+	$("#select-teacher-dropdown").load('populateActiveTeachers', {
 		pageFragment : 'components/data-component.html :: frag-teacher-dropdown',
 		subjectId : subjectId
 	}, function(response, status, xhr) {
@@ -59,5 +59,26 @@ function populateClassDropdown(standardId, subjectId, teacherId){
 	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);
 		$('#select-class-dropdown').selectpicker('refresh');
+	});
+}
+
+function populateStudentDropdown(standardId, classId){
+	$("#select-student-dropdown").load('populateStudents', {
+		pageFragment : 'components/data-component.html :: frag-student-dropdown',
+		standardId : standardId,
+		classId : classId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-student-dropdown').selectpicker('refresh');
+	});
+}
+
+function populateClassMonthDropdown(classId){
+	$("#select-class-month-dropdown").load('populateClassMonth', {
+		pageFragment : 'components/data-component.html :: frag-class-month-dropdown',
+		classId : classId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-class-month-dropdown').selectpicker('refresh');
 	});
 }

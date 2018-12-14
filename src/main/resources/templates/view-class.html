@@ -51,7 +51,6 @@
 										<th>Standard</th>
 										<th>Center</th>
 										<th>Start End</th>
-										<th>Active</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -63,7 +62,6 @@
 										<td th:text="${class.standard}"></td>
 										<td th:text="${class.centerName}"></td>
 										<td th:text="${#dates.format(class.startDate, 'yyyy/MM/dd') +' - '+ #dates.format(class.endDate, 'yyyy/MM/dd')}"></td>
-										<td th:text="${class.isActive}"></td>
 									</tr>
 								</tbody>
 							</table>

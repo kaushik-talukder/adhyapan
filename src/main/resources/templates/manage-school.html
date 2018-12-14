@@ -39,20 +39,22 @@
 					</div>
 					<div class="panel-body">
 						<h4>Add School</h4>
-						<div class="row">
-							<div class="col-lg-4">
-								<label class="required">School Name: </label>
-								<input id="school-name" class="form-control" type="text" />
+						<form id="add-school-form" action="javascript:void(0);">
+							<div class="row">
+								<div class="col-lg-4">
+									<label class="required">School Name: </label>
+									<input id="school-name" required="required" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label class="required">School Code: </label>
+									<input id="school-code" required="required" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label>&nbsp;</label><br/>
+									<button class="btn btn-primary" id="btn-save-school">Save</button>
+								</div>
 							</div>
-							<div class="col-lg-4">
-								<label class="required">School Code: </label>
-								<input id="school-code" class="form-control" type="text" />
-							</div>
-							<div class="col-lg-4">
-								<label>&nbsp;</label><br/>
-								<button class="btn btn-primary" id="btn-save-school">Save</button>
-							</div>
-						</div>
+						</form>
 					</div>
 					<div class="panel-body">
 						<h4>Existing Schools</h4>

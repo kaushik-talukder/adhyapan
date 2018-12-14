@@ -43,68 +43,65 @@
 						<h2>Register Student</h2>
 					</div>
 					<div class="panel-body">
-						<div class="row">
-							<div class="col-lg-4">
-								<label class="required">First Name: </label>
-								<input id="first-name" class="form-control" type="text" />
+						<form id="reg-student-form" action="javascript:void(0);">
+							<div class="row">
+								<div class="col-lg-4">
+									<label class="required">First Name: </label>
+									<input required="required" id="first-name" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label class="required">Last Name: </label>
+									<input required="required" id="last-name" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label class="required">Student Code: </label>
+									<input required="required" id="student-code" class="form-control" type="text" />
+								</div>
 							</div>
-							<div class="col-lg-4">
-								<label class="required">Last Name: </label>
-								<input id="last-name" class="form-control" type="text" />
+							<div class="row row-top-buffer">
+								<div class="col-lg-2">
+									<label class="required">Gender: </label><br/>
+									<input type="radio" required="required" name="gender" value="M" />&nbsp;Male&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="gender" value="F" />&nbsp;Female
+								</div>
+								<div class="col-lg-2">
+									<label class="required">Start Date: </label><br/>
+									<input required="required" type="text" readonly="readonly" class="form-control" id="studentStartDate" />
+								</div>
+								<div class="col-lg-4">
+									<label class="required">School: </label>
+									<div th:insert="components/data-component.html :: frag-school-dropdown"> </div>
+								</div>
+								<div class="col-lg-4">
+									<label class="required">Standard: </label>
+									<div th:insert="components/data-component.html :: frag-standard-dropdown"> </div>
+								</div>
 							</div>
-						</div>
-						<div class="row row-top-buffer">
-							<div class="col-lg-4">
-								<label class="required">Student Code: </label>
-								<input id="student-code" class="form-control" type="text" />
+							<div class="row row-top-buffer">
+								<div class="col-lg-4">
+									<label class="required">Guardian Name: </label>
+									<input required="required" id="guardian-name" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label>Address: </label>
+									<input id="address" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-2">
+									<label class="required">Guardian Contact: </label>
+									<input required="required" id="guardian-contact" type="number" class="form-control" />
+								</div>
+								<div class="col-lg-2">
+									<label>Student Contact: </label>
+									<input id="student-contact" class="form-control" type="number" />
+								</div>
 							</div>
-							<div class="col-lg-2">
-								<label class="required">Gender: </label><br/>
-								<input type="radio" name="gender" value="M" />&nbsp;Male&nbsp;&nbsp;&nbsp;
-								<input type="radio" name="gender" value="F" />&nbsp;Female
+							<div class="row row-top-buffer">
+								<div class="col-lg-12 text-center">
+									<br/>
+									<button id="btn-register-student" class="btn btn-primary">Register</button>
+								</div>
 							</div>
-							<div class="col-lg-2">
-								<label class="required">Start Date: </label><br/>
-								<input type="text" class="form-control" id="studentStartDate" />
-							</div>
-						</div>
-						<div class="row row-top-buffer">
-							<div class="col-lg-4">
-								<label class="required">School: </label>
-								<div th:insert="components/data-component.html :: frag-school-dropdown"> </div>
-							</div>
-							<div class="col-lg-4">
-								<label class="required">Standard: </label>
-								<div th:insert="components/data-component.html :: frag-standard-dropdown"> </div>
-							</div>
-							
-						</div>
-						<div class="row row-top-buffer">
-							<div class="col-lg-4">
-								<label class="required">Guardian Name: </label>
-								<input id="guardian-name" class="form-control" type="text" />
-							</div>
-							<div class="col-lg-4">
-								<label>Guardian Contact: </label>
-								<input id="guardian-contact" type="text" class="form-control" />
-							</div>
-						</div>
-						<div class="row row-top-buffer">
-							<div class="col-lg-4">
-								<label class="required">Student Contact: </label>
-								<input id="student-contact" class="form-control" type="text" />
-							</div>
-							<div class="col-lg-4">
-								<label class="required">Address: </label>
-								<input id="address" class="form-control" type="text" />
-							</div>
-						</div>
-						<div class="row row-top-buffer">
-							<div class="col-lg-8 text-right">
-								<br/>
-								<button id="btn-register-student" class="btn btn-primary">Register</button>
-							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>

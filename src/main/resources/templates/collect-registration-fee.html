@@ -27,7 +27,7 @@
 <script src="js-lib/daterangepicker.min.js"></script>
 
 <script src="js-custom/common.js"></script>
-<script src="js-custom/register-teacher.js"></script>
+<script src="js-custom/collect-tution-fee.js"></script>
 </head>
 
 <body>
@@ -40,48 +40,28 @@
 				<div class="panel-body">
 					<!-- Start your page content -->
 					<div class="panel-heading">
-						<h2>Register Teacher</h2>
+						<h2>Collect Registration Fee</h2>
 					</div>
 					<div class="panel-body">
+						
 						<div class="row">
 							<div class="col-lg-4">
-								<label class="required">First Name: </label>
-								<input id="first-name" class="form-control" type="text" />
+								<label class="required">Student Name: </label>
+								<input type="text" class="form-control" />
 							</div>
 							<div class="col-lg-4">
-								<label class="required">Last Name: </label>
-								<input id="last-name" class="form-control" type="text" />
+								<label class="required">Student: </label>
+								<div th:insert="components/data-component.html :: frag-teacher-dropdown"> </div>
 							</div>
 							<div class="col-lg-4">
-								<label class="required">Teacher Code: </label>
-								<input id="teacher-code" class="form-control" type="text" />
+								<label class="required">Fee: </label>
+								<input type="number" value="0" class="form-control" />
 							</div>
 						</div>
 						<div class="row row-top-buffer">
-							<div class="col-lg-2">
-								<label class="required">School: </label>
-								<div th:insert="components/data-component.html :: frag-school-dropdown"> </div>
-							</div>
-							<div class="col-lg-2">
-								<label class="required">Subject: </label>
-								<div th:insert="components/data-component.html :: frag-subject-dropdown"> </div>
-							</div>
-							<div class="col-lg-2">
-								<label class="required">Start Date: </label>
-								<input type="text" class="form-control" readonly="readonly" id="teacherStartDate" />
-							</div>
-							<div class="col-lg-2">
-								<label class="required">Contact: </label>
-								<input id="teacher-contact" class="form-control" type="number" />
-							</div>
-							<div class="col-lg-4">
-								<label>Address: </label>
-								<input id="teacher-address" class="form-control" type="text" />
-							</div>
-						</div>
-						<div class="row row-top-buffer text-center">
-							<div class="col-lg-12">
-								<button id="btn-register-teacher" class="btn btn-primary">Register</button>
+							<div class="col-lg-12 text-center">
+								<label>&nbsp;</label><br/>
+								<button id="btn-save-registration-fee" class="btn btn-primary">Save</button>
 							</div>
 						</div>
 					</div>
@@ -91,9 +71,12 @@
 			<footer th:insert="components/header-footer.html :: footer"></footer>
 		</div>
 	</div>
-
-	<div class="modal-popup" id="register-teacher-dialog-message" title="Register Teacher">
-		<p>Teacher registered successfully</p>
+	<input type="hidden" id="fee-category-id" th:attr = "value = ${feeCategoryId}" />
+	<div class="modal-popup" id="registration-fee-dialog-message" title="Registration Fee">
+		<p>Record saved successfully</p>
+	</div>
+	<div class="modal-popup" id="registration-fee-confirm-message" title="Registration Fee">
+		<p>Are you sure to save the fee?</p>
 	</div>
 	
 </body>

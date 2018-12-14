@@ -1,8 +1,9 @@
 $(document).ready(function() {
 	populateAllSubjects();
-	
-	$('body').on('click', '#btn-save-subject', function() {
-		saveSubject();
+
+	$('body').on('submit', '#add-subject-form', function(e) {
+		e.preventDefault();
+	    saveSubject();
 	});
 });
 

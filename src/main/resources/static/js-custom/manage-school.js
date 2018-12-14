@@ -1,7 +1,8 @@
 $(document).ready(function() {
 	populateAllSchools();
 	
-	$('body').on('click', '#btn-save-school', function() {
+	$('body').on('submit', '#add-school-form', function(e) {
+		e.preventDefault();
 		saveSchool();
 	});
 });

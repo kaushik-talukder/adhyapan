@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Formula;
 
-import com.tms.adhyapan.util.CommonConstants;
 import com.tms.adhyapan.util.CommonUtils;
 
 import lombok.Data;
@@ -43,8 +42,8 @@ public class Clazz implements Serializable {
 	private Long standardId;
 	@Formula(value = "(select stnd.standard from standard stnd where stnd.id = standard_id)")
 	private String standard; 
+	private Double fee;
 	
 	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
-	private String isActive = CommonConstants.ACTIVE_YES;
 }

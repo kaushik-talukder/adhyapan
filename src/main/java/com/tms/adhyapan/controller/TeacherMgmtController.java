@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tms.adhyapan.dao.entity.Teacher;
 import com.tms.adhyapan.dao.repository.TeacherRepository;
+import com.tms.adhyapan.util.CommonUtils;
 
 @Controller
 public class TeacherMgmtController {
@@ -48,10 +49,17 @@ public class TeacherMgmtController {
 	}
 	
 	@RequestMapping(value = "/populateAllTeachers")
-	public String populateAllTeachers(Model model, @RequestParam(value = "pageFragment") String pageFragment, @RequestParam(value = "subjectId", required = false) Long subjectId) {
+	public String populateAllTeachers(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
+		List<Teacher> teacherList = teacherRepository.findAll();
+		model.addAttribute("teacherList", teacherList);
+		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/populateActiveTeachers")
+	public String populateActiveTeachers(Model model, @RequestParam(value = "pageFragment") String pageFragment, @RequestParam(value = "subjectId", required = false) Long subjectId) {
 		List<Teacher> teacherList = null;
 		if(Objects.nonNull(subjectId)) {
-			teacherList = teacherRepository.findBySubjectId(subjectId);
+			teacherList = teacherRepository.findBySubjectIdAndEndDateGreaterThan(subjectId, CommonUtils.getCurrentSystemDate());
 		} else {
 			teacherList = teacherRepository.findAll();
 		}

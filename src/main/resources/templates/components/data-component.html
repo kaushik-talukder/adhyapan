@@ -1,4 +1,4 @@
-<select id="select-school-dropdown" th:fragment="frag-school-dropdown" class="form-control selectpicker" data-live-search="true" title="Select school">
+<select required="required" id="select-school-dropdown" th:fragment="frag-school-dropdown" class="form-control selectpicker" data-live-search="true" title="Select school">
 	<option class="school-option" th:each="school : ${schoolList}" th:attr="value=${school.id}"><span th:text="${school.schoolCode +' - '+ school.schoolName}"></span></option>
 </select>
 
@@ -6,7 +6,7 @@
 	<option class="subject-option" th:each="subject : ${subjectList}" th:attr="value=${subject.id}"><span th:text="${subject.subjectCode +' - '+ subject.subjectName}"></span></option>
 </select>
 
-<select id="select-standard-dropdown" th:fragment="frag-standard-dropdown" class="form-control selectpicker" data-live-search="true" title="Select standard">
+<select required="required" id="select-standard-dropdown" th:fragment="frag-standard-dropdown" class="form-control selectpicker" data-live-search="true" title="Select standard">
 	<option class="standard-option" th:each="standard : ${standardList}" th:attr="value=${standard.id}"><span th:text="${standard.standard}"></span></option>
 </select>
 
@@ -20,4 +20,12 @@
 
 <select id="select-class-dropdown" th:fragment="frag-class-dropdown" class="form-control selectpicker" data-live-search="true" title="Select class">
 	<option class="class-option" th:each="clazz : ${classList}" th:attr="value=${clazz.id}"><span th:text="${clazz.classCode}"></span></option>
+</select>
+
+<select id="select-student-dropdown" th:fragment="frag-student-dropdown" class="form-control selectpicker" data-live-search="true" title="Select student">
+	<option class="student-option" th:each="student : ${studentList}" th:attr="value=${student.id}"><span th:text="${student.firstName +' '+ student.lastName}"></span></option>
+</select>
+
+<select id="select-class-month-dropdown" th:fragment="frag-class-month-dropdown" class="form-control selectpicker" data-live-search="true" multiple="multiple" title="Select month">
+	<option class="class-month-option" th:each="month : ${monthList}" th:attr="value=${month}"><span th:text="${month}"></span></option>
 </select>

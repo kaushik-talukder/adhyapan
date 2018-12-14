@@ -37,23 +37,25 @@
 					<div class="panel-heading">
 						<h2>Manage Subjects</h2>
 					</div>
-					<div class="panel-body">
-						<h4>Add Subject</h4>
-						<div class="row">
-							<div class="col-lg-4">
-								<label class="required">Subject Name: </label>
-								<input id="subject-name" class="form-control" type="text" />
-							</div>
-							<div class="col-lg-4">
-								<label class="required">Subject Code: </label>
-								<input id="subject-code" class="form-control" type="text" />
-							</div>
-							<div class="col-lg-4">
-								<label>&nbsp;</label><br/>
-								<button class="btn btn-primary" id="btn-save-subject">Save</button>
+					<form id="add-subject-form" action="javascript:void(0);">
+						<div class="panel-body">
+							<h4>Add Subject</h4>
+							<div class="row">
+								<div class="col-lg-4">
+									<label class="required">Subject Name: </label>
+									<input required="required" id="subject-name" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label class="required">Subject Code: </label>
+									<input required="required" id="subject-code" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label>&nbsp;</label><br/>
+									<button class="btn btn-primary" id="btn-save-subject">Save</button>
+								</div>
 							</div>
 						</div>
-					</div>
+					</form>
 					<div class="panel-body">
 						<h4>Existing Subjects</h4>
 						<div id="div-all-subjects-display">

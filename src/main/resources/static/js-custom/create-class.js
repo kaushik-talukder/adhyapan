@@ -37,6 +37,7 @@ function createClass(){
 	var teacherId = $("#select-teacher-dropdown").val();
 	var startDate = new Date($('#classStartDate').val());
 	var endDate = new Date($('#classEndDate').val());
+	var feeAmount = $("#fee-amount").val();
 	
 	$.ajax({
 		method : "POST",
@@ -48,7 +49,8 @@ function createClass(){
 			standardId: standardId,
 			teacherId: teacherId,
 			startDate: startDate,
-			endDate: endDate
+			endDate: endDate,
+			fee: feeAmount
 		}),
 		dataType : "json",
 		contentType: "application/json"

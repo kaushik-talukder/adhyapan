@@ -15,6 +15,10 @@ label.required:after {
 	margin-top: 30px;
 }
 
+.row-top-buffer-5-per{
+	margin-top: 5%;
+}
+
 .padding-right-15{
 	padding-right:15px; 
 }

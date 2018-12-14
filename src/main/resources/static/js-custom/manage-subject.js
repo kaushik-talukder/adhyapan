@@ -2,7 +2,10 @@ $(document).ready(function() {
 	populateAllSubjects();
 	
 	$('body').on('click', '#btn-save-subject', function() {
-		saveSubject();
+		var addSubjectForm = $("#add-subject-form").parsley();
+		if(addSubjectForm.isValid()){
+			saveSubject();
+		}
 	});
 });
 

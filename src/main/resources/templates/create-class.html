@@ -48,41 +48,39 @@
 								<label class="required">Class Code: </label>
 								<input id="class-code" class="form-control" type="text" />
 							</div>
-							<div class="col-lg-4">
+							<div class="col-lg-2">
 								<label class="required">Center: </label>
 								<div th:insert="components/data-component.html :: frag-center-dropdown"> </div>
 							</div>
-						</div>
-						<div class="row row-top-buffer">
-							<div class="col-lg-4">
+							<div class="col-lg-2">
 								<label class="required">Standard: </label><br/>
 								<div th:insert="components/data-component.html :: frag-standard-dropdown"> </div>
 							</div>
-							<div class="col-lg-4">
+							<div class="col-lg-2">
 								<label class="required">Subject: </label>
 								<div th:insert="components/data-component.html :: frag-subject-dropdown"> </div>
 							</div>
-						</div>
-						<div class="row row-top-buffer">
-							<div class="col-lg-4">
+							<div class="col-lg-2">
 								<label class="required">Teacher: </label>
 								<div th:insert="components/data-component.html :: frag-teacher-dropdown"> </div>
 							</div>
+						</div>
+						<div class="row row-top-buffer">
 							<div class="col-lg-2">
 								<label class="required">Start Date: </label>
-								<input type="text" class="form-control" id="classStartDate" />
+								<input type="text" readonly="readonly" class="form-control" id="classStartDate" />
 							</div>
 							<div class="col-lg-2">
 								<label class="required">End Date: </label>
-								<input type="text" class="form-control" id="classEndDate" />
+								<input type="text" readonly="readonly" class="form-control" id="classEndDate" />
 							</div>
-						</div>
-						<div class="row row-top-buffer">
-							<div class="col-lg-4">
+							<div class="col-lg-2">
 								<label class="required">Fee: </label>
 								<input type="number" id="fee-amount" class="form-control">
 							</div>
-							<div class="col-lg-4 text-right">
+						</div>
+						<div class="row row-top-buffer">
+							<div class="col-lg-12 text-center">
 								<br/>
 								<button id="btn-create-class" class="btn btn-primary">Create</button>
 							</div>

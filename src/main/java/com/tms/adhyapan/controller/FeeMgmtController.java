@@ -33,6 +33,14 @@ public class FeeMgmtController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/collectRegistrationFeeLandingPage")
+	public ModelAndView collectRegistrationFeeLandingPage(HttpServletRequest request) {
+		LOGGER.info("Inside collectRegistrationFeeLandingPage");
+		ModelAndView mv = new ModelAndView("collect-registration-fee");
+		mv.addObject("feeCategoryId", CommonConstants.FEE_CAT_REGISTRATION);
+		return mv;
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/saveTutionFee")
 	public List<FeeTxn> saveTutionFee(@RequestBody List<FeeTxn> feeTxnList) {

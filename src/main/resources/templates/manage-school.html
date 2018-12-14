@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css-lib/jquery.dataTables.min.css">
 <link rel="stylesheet" href="css-lib/dataTables.bootstrap.css"/>
 <link rel="stylesheet" href="css-lib/jquery-ui.min.css"/>
+<link rel="stylesheet" href="css-lib/parsley.css"/>
 
 <link rel="stylesheet" href="css-custom/common.css">
 
@@ -20,6 +21,7 @@
 <script src="js-lib/jquery.dataTables.min.js"></script>
 <script src="js-lib/dataTables.bootstrap.min.js"></script>
 <script src="js-lib/jquery-ui.min.js"></script>
+<script src="js-lib/parsley.min.js"></script>
 
 <script src="js-custom/common.js"></script>
 <script src="js-custom/manage-school.js"></script>
@@ -39,20 +41,22 @@
 					</div>
 					<div class="panel-body">
 						<h4>Add School</h4>
-						<div class="row">
-							<div class="col-lg-4">
-								<label class="required">School Name: </label>
-								<input id="school-name" class="form-control" type="text" />
+						<form id="add-school-form" action="javascript:void(0);">
+							<div class="row">
+								<div class="col-lg-4">
+									<label class="required">School Name: </label>
+									<input id="school-name" required="required" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label class="required">School Code: </label>
+									<input id="school-code" required="required" class="form-control" type="text" />
+								</div>
+								<div class="col-lg-4">
+									<label>&nbsp;</label><br/>
+									<button class="btn btn-primary" id="btn-save-school">Save</button>
+								</div>
 							</div>
-							<div class="col-lg-4">
-								<label class="required">School Code: </label>
-								<input id="school-code" class="form-control" type="text" />
-							</div>
-							<div class="col-lg-4">
-								<label>&nbsp;</label><br/>
-								<button class="btn btn-primary" id="btn-save-school">Save</button>
-							</div>
-						</div>
+						</form>
 					</div>
 					<div class="panel-body">
 						<h4>Existing Schools</h4>

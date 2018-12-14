@@ -2,7 +2,10 @@ $(document).ready(function() {
 	populateAllSchools();
 	
 	$('body').on('click', '#btn-save-school', function() {
-		saveSchool();
+		var addSchoolForm = $("#add-school-form").parsley();
+		if(addSchoolForm.isValid()){
+			saveSchool();
+		}
 	});
 });
 

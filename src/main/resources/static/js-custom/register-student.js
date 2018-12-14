@@ -1,7 +1,8 @@
 $(document).ready(function() {
 	populateSchoolDropdown();
 	populateStandardDropdown();
-	$('body').on('click', '#btn-register-student', function() {
+	$('body').on('submit', '#reg-student-form', function(e) {
+		e.preventDefault();
 		registerStudent();
 	});
 	$("#studentStartDate").daterangepicker({

@@ -1,11 +1,9 @@
 $(document).ready(function() {
 	populateAllSchools();
 	
-	$('body').on('click', '#btn-save-school', function() {
-		var addSchoolForm = $("#add-school-form").parsley();
-		if(addSchoolForm.isValid()){
-			saveSchool();
-		}
+	$('body').on('submit', '#add-school-form', function(e) {
+		e.preventDefault();
+		saveSchool();
 	});
 });
 

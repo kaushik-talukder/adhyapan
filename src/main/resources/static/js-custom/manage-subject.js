@@ -1,11 +1,9 @@
 $(document).ready(function() {
 	populateAllSubjects();
-	
-	$('body').on('click', '#btn-save-subject', function() {
-		var addSubjectForm = $("#add-subject-form").parsley();
-		if(addSubjectForm.isValid()){
-			saveSubject();
-		}
+
+	$('body').on('submit', '#add-subject-form', function(e) {
+		e.preventDefault();
+	    saveSubject();
 	});
 });
 

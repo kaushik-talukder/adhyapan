@@ -93,7 +93,7 @@ public class StudentMgmtController {
 		} else if(Objects.nonNull(standardId)) {
 			
 		} else if(Objects.nonNull(classId)) {
-			studentList = studentRepository.getStudentsByClassId(classId);
+			studentList = studentRepository.getAssignedStudentsByClassId(classId);
 		}
 		model.addAttribute("studentList", studentList);
 		return pageFragment;

@@ -2,7 +2,7 @@
 	<option class="school-option" th:each="school : ${schoolList}" th:attr="value=${school.id}"><span th:text="${school.schoolCode +' - '+ school.schoolName}"></span></option>
 </select>
 
-<select id="select-subject-dropdown" th:fragment="frag-subject-dropdown" class="form-control selectpicker" data-live-search="true" title="Select subject">
+<select required="required" id="select-subject-dropdown" th:fragment="frag-subject-dropdown" class="form-control selectpicker" data-live-search="true" title="Select subject">
 	<option class="subject-option" th:each="subject : ${subjectList}" th:attr="value=${subject.id}"><span th:text="${subject.subjectCode +' - '+ subject.subjectName}"></span></option>
 </select>
 
@@ -10,22 +10,22 @@
 	<option class="standard-option" th:each="standard : ${standardList}" th:attr="value=${standard.id}"><span th:text="${standard.standard}"></span></option>
 </select>
 
-<select id="select-center-dropdown" th:fragment="frag-center-dropdown" class="form-control selectpicker" data-live-search="true" title="Select center">
+<select required="required" id="select-center-dropdown" th:fragment="frag-center-dropdown" class="form-control selectpicker" data-live-search="true" title="Select center">
 	<option class="center-option" th:each="center : ${centerList}" th:attr="value=${center.id}"><span th:text="${center.name}"></span></option>
 </select>
 
-<select id="select-teacher-dropdown" th:fragment="frag-teacher-dropdown" class="form-control selectpicker" data-live-search="true" title="Select teacher">
+<select required="required" id="select-teacher-dropdown" th:fragment="frag-teacher-dropdown" class="form-control selectpicker" data-live-search="true" title="Select teacher">
 	<option class="teacher-option" th:each="teacher : ${teacherList}" th:attr="value=${teacher.id}"><span th:text="${teacher.teacherCode +' - '+ teacher.firstName +' '+teacher.lastName}"></span></option>
 </select>
 
-<select id="select-class-dropdown" th:fragment="frag-class-dropdown" class="form-control selectpicker" data-live-search="true" title="Select class">
+<select required="required" id="select-class-dropdown" th:fragment="frag-class-dropdown" class="form-control selectpicker" data-live-search="true" title="Select class">
 	<option class="class-option" th:each="clazz : ${classList}" th:attr="value=${clazz.id}"><span th:text="${clazz.classCode}"></span></option>
 </select>
 
-<select id="select-student-dropdown" th:fragment="frag-student-dropdown" class="form-control selectpicker" data-live-search="true" title="Select student">
+<select required="required" id="select-student-dropdown" th:fragment="frag-student-dropdown" class="form-control selectpicker" data-live-search="true" title="Select student">
 	<option class="student-option" th:each="student : ${studentList}" th:attr="value=${student.id}"><span th:text="${student.firstName +' '+ student.lastName}"></span></option>
 </select>
 
-<select id="select-class-month-dropdown" th:fragment="frag-class-month-dropdown" class="form-control selectpicker" data-live-search="true" multiple="multiple" title="Select month">
+<select required="required" id="select-class-month-dropdown" th:fragment="frag-class-month-dropdown" class="form-control selectpicker" data-live-search="true" multiple="multiple" title="Select month">
 	<option class="class-month-option" th:each="month : ${monthList}" th:attr="value=${month}"><span th:text="${month}"></span></option>
 </select>

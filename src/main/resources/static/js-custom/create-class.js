@@ -24,7 +24,8 @@ $(document).ready(function() {
 	});
 	
 	
-	$('body').on('click', '#btn-create-class', function(){
+	$('body').on('submit', '#create-class-form', function(e){
+		e.preventDefault();
 		createClass();
 	});
 });

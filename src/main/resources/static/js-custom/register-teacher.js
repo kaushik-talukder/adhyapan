@@ -2,7 +2,8 @@ $(document).ready(function() {
 	populateSchoolDropdown();
 	populateSubjectDropdown();
 	
-	$('body').on('click', '#btn-register-teacher', function() {
+	$('body').on('submit', '#reg-teacher-form', function(e) {
+		e.preventDefault();
 		registerTeacher();
 	});
 	

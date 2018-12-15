@@ -59,7 +59,7 @@ public class TeacherMgmtController {
 	public String populateActiveTeachers(Model model, @RequestParam(value = "pageFragment") String pageFragment, @RequestParam(value = "subjectId", required = false) Long subjectId) {
 		List<Teacher> teacherList = null;
 		if(Objects.nonNull(subjectId)) {
-			teacherList = teacherRepository.findBySubjectIdAndEndDateGreaterThan(subjectId, CommonUtils.getCurrentSystemDate());
+			teacherList = teacherRepository.findBySubjectIdAndEndDateGreaterThanEqual(subjectId, CommonUtils.getCurrentSystemDate());
 		} else {
 			teacherList = teacherRepository.findAll();
 		}

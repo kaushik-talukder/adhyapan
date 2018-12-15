@@ -76,4 +76,5 @@ function resetForm(){
 	$("#select-teacher-dropdown").val('').selectpicker('refresh');;
 	$('#classStartDate').data('daterangepicker').setStartDate(moment().format('YYYY/MM/DD'));
 	$('#classEndDate').data('daterangepicker').setStartDate(moment().add(1,'year').format('YYYY/MM/DD'));
+	$("#fee-amount").val('');
 }

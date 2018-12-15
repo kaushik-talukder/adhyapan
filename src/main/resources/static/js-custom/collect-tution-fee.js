@@ -66,15 +66,13 @@ function saveTutionFee(){
 	var monthCode = $("#select-class-month-dropdown").val();
 	var feeCategoryId= $("#fee-category-id").val();
 	var remarks = $("#remarks").val();
-	var feeAmount = 0;
-	if(monthCode.length > 0){
-		feeAmount = $("#total-fee-amount").val() / monthCode.length;
-	} else {
-		feeAmount = $("#total-fee-amount").val();
-	}
-	
+	var feeAmount = $("#total-fee-amount").val();
 	var studentTutionFee = [];
+
 	$(monthCode).each(function(index, value){
+		if (index > 0){
+			feeAmount = 0;
+		}
 		studentTutionFee.push({
 			classId: classId,
 			studentId: studentId,
@@ -102,7 +100,6 @@ function saveTutionFee(){
 			}
 		});
 	});
-	
 }
 
 function resetForm(){

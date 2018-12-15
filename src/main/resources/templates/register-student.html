@@ -59,15 +59,12 @@
 								</div>
 							</div>
 							<div class="row row-top-buffer">
-								<div class="col-lg-2">
+								<div class="col-lg-4">
 									<label class="required">Gender: </label><br/>
 									<input type="radio" required="required" name="gender" value="M" />&nbsp;Male&nbsp;&nbsp;&nbsp;
 									<input type="radio" name="gender" value="F" />&nbsp;Female
 								</div>
-								<div class="col-lg-2">
-									<label class="required">Start Date: </label><br/>
-									<input required="required" type="text" readonly="readonly" class="form-control" id="studentStartDate" />
-								</div>
+								
 								<div class="col-lg-4">
 									<label class="required">School: </label>
 									<div th:insert="components/data-component.html :: frag-school-dropdown"> </div>

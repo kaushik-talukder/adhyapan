@@ -5,12 +5,6 @@ $(document).ready(function() {
 		e.preventDefault();
 		registerStudent();
 	});
-	$("#studentStartDate").daterangepicker({
-		locale: {
-			format: 'YYYY/MM/DD'
-		},
-		singleDatePicker : true
-	});
 });
 
 function registerStudent(){
@@ -24,7 +18,6 @@ function registerStudent(){
 	var studentContact = $('#student-contact').val();
 	var gender = $('input[name=gender]:checked').val();
 	var standardId = $('#select-standard-dropdown').val();
-	var startDate = new Date($('#studentStartDate').val());
 	$.ajax({
 		method : "POST",
 		url : "registerStudent",
@@ -38,8 +31,7 @@ function registerStudent(){
 			gender: gender,
 			address: address,
 			schoolId: schoolId,
-			standardId: standardId,
-			startDate: startDate
+			standardId: standardId
 		}),
 		dataType : "json",
 		contentType: "application/json"
@@ -67,5 +59,4 @@ function resetForm() {
 	$('#guardian-contact').val('');
 	$('#student-contact').val('');
 	$('input[name="gender"]').prop('checked', false);
-	$("#studentStartDate").data('daterangepicker').setStartDate(moment().format('YYYY/MM/DD'));
 }

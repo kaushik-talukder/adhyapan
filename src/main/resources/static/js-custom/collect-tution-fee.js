@@ -13,13 +13,14 @@ $(document).ready(function() {
 	
 	$('body').on('click', '.class-option', function() {
 		var classId = $("#select-class-dropdown").val();
-		populateStudentDropdown(null,classId);
+		populateStudentDropdown(null,classId, null);
 	});
 	
 	$('body').on('click', '.student-option', function() {
 		var classId = $("#select-class-dropdown").val();
 		populateClassMonthDropdown(classId);
-		populateClassFee(classId);
+		var classFee = $("#select-class-dropdown :checked").attr("class-fee");
+		$("#fee-per-month").val(classFee);
 	});
 	$('body').on('change', '#select-class-month-dropdown', function() {
 		var monthCode = $("#select-class-month-dropdown").val();
@@ -47,34 +48,19 @@ $(document).ready(function() {
 	});
 });
 
-function populateClassFee(classId){
-	$.ajax({
-		method : "POST",
-		url : "populateClassFee",
-		data : {
-			classId : classId
-		},
-		dataType : "json"
-	}).done(function(response) {
-		$("#fee-per-month").val(response);
-	});
-}
-
 function saveTutionFee(){
 	var classId = $("#select-class-dropdown").val();
 	var studentId = $("#select-student-dropdown").val();
 	var monthCode = $("#select-class-month-dropdown").val();
 	var feeCategoryId= $("#fee-category-id").val();
 	var remarks = $("#remarks").val();
-	var feeAmount = 0;
-	if(monthCode.length > 0){
-		feeAmount = $("#total-fee-amount").val() / monthCode.length;
-	} else {
-		feeAmount = $("#total-fee-amount").val();
-	}
-	
+	var feeAmount = $("#total-fee-amount").val();
 	var studentTutionFee = [];
+
 	$(monthCode).each(function(index, value){
+		if (index > 0){
+			feeAmount = 0;
+		}
 		studentTutionFee.push({
 			classId: classId,
 			studentId: studentId,
@@ -102,7 +88,6 @@ function saveTutionFee(){
 			}
 		});
 	});
-	
 }
 
 function resetForm(){
@@ -111,6 +96,6 @@ function resetForm(){
 	$("#select-class-dropdown").val('').selectpicker('refresh');
 	$("#select-student-dropdown").val('').selectpicker('refresh');
 	$("#select-class-month-dropdown").val('').selectpicker('refresh');
-	$("#total-fee-amount").val(0);
+	$("#total-fee-amount").val("");
 	$("#remarks").val("");
 }

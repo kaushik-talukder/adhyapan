@@ -9,5 +9,5 @@ import com.tms.adhyapan.dao.entity.Teacher;
 
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
-	List<Teacher> findBySubjectIdAndEndDateGreaterThan(Long subjectId, Date currDate);
+	List<Teacher> findBySubjectIdAndEndDateGreaterThanEqual(Long subjectId, Date currDate);
 }

@@ -58,8 +58,16 @@ public class ClassMgmtController {
 		return mv;
 	}
 
+	
 	@RequestMapping(value = "/populateAllClasses")
-	public String populateAllClasses(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+	public String populateAllClasses(Model model, @RequestParam(value = "pageFragment") String pageFragment) {
+		List<Clazz> classList = classRepository.findAll();
+		model.addAttribute("classList", classList);
+		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/populateActiveClasses")
+	public String populateActiveClasses(Model model, @RequestParam(value = "pageFragment") String pageFragment,
 			@RequestParam(value = "standardId", required = false) Long standardId,
 			@RequestParam(value = "subjectId", required = false) Long subjectId,
 			@RequestParam(value = "teacherId", required = false) Long teacherId) {
@@ -122,14 +130,6 @@ public class ClassMgmtController {
 		Date endDate = CommonUtils.getCurrentSystemDate();
 		Integer updateCount = studentClassRepository.removeStudentsFromClass(endDate, classId, studentList);
 		return updateCount;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "/populateClassFee")
-	public Long populateClassFee(@RequestParam(value = "classId") Long classId) {
-		Long fee = 0L;
-		fee = classRepository.getClassFee(classId);
-		return fee;
 	}
 	
 	@RequestMapping(value = "/populateClassMonth")

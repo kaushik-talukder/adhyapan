@@ -51,7 +51,7 @@ function populateTeacherDropdown(subjectId){
 }
 
 function populateClassDropdown(standardId, subjectId, teacherId){
-	$("#select-class-dropdown").load('populateAllClasses', {
+	$("#select-class-dropdown").load('populateActiveClasses', {
 		pageFragment : 'components/data-component.html :: frag-class-dropdown',
 		standardId : standardId,
 		subjectId : subjectId,
@@ -62,11 +62,12 @@ function populateClassDropdown(standardId, subjectId, teacherId){
 	});
 }
 
-function populateStudentDropdown(standardId, classId){
-	$("#select-student-dropdown").load('populateStudents', {
+function populateStudentDropdown(standardId, classId, studentFirstName){
+	$("#select-student-dropdown").load('populateActiveStudents', {
 		pageFragment : 'components/data-component.html :: frag-student-dropdown',
 		standardId : standardId,
-		classId : classId
+		classId : classId,
+		studentFirstName : studentFirstName
 	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);
 		$('#select-student-dropdown').selectpicker('refresh');

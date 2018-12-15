@@ -35,16 +35,16 @@ public class CommonUtils {
 		return new Date(System.currentTimeMillis());
 	}
 	
-	public static String getDateAsString(Date date) {
-		DateFormat dateFormat = new SimpleDateFormat(CommonConstants.DATE_FORMAT_YYYYMMM);
+	public static String getDateAsFormat(Date date, String format) {
+		DateFormat dateFormat = new SimpleDateFormat(format);
 		return dateFormat.format(date);
 	}
 	
 	public static List<String> getMonthList(Date startDate, Date endDate){
 		List<String> monthList = new ArrayList<>();
-		String startDateStr = getDateAsString(startDate);
-		String endDateStr = getDateAsString(endDate);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(CommonConstants.DATE_FORMAT_YYYYMMM, Locale.ENGLISH);
+		String startDateStr = getDateAsFormat(startDate, CommonConstants.DATE_FORMAT_YYYY_MMM);
+		String endDateStr = getDateAsFormat(endDate, CommonConstants.DATE_FORMAT_YYYY_MMM);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(CommonConstants.DATE_FORMAT_YYYY_MMM, Locale.ENGLISH);
 		YearMonth startYearMonth = YearMonth.parse(startDateStr, formatter);
 	    YearMonth endYearMonth = YearMonth.parse(endDateStr, formatter);
 	    while(startYearMonth.isBefore(endYearMonth)) {

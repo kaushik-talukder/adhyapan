@@ -24,7 +24,8 @@ $(document).ready(function() {
 	$("body").on("click", "#btn-assign-student-to-class", function() {
 		var standardId = $("#select-standard-dropdown").val();
 		var classId = $("#select-class-dropdown").val();
-		assignStudentsToClass(standardId, classId);
+		var classEndDate = $("#select-class-dropdown :checked").attr("end-date");
+		assignStudentsToClass(standardId, classId, classEndDate);
 	});
 	
 	$("body").on("click", "#btn-remove-student-from-class", function() {
@@ -51,12 +52,13 @@ function populateAvailableStudentsToAssignClass(standardId, classId){
 	});
 }
 
-function assignStudentsToClass(standardId, classId){
+function assignStudentsToClass(standardId, classId, classEndDate){
 	var studentsToBeAssigned = [];
 	$(".chk-available-students:checkbox:checked").each(function(index){
 		studentsToBeAssigned.push({
 			classId : classId,
-			studentId : $(this).val()
+			studentId : $(this).val(),
+			endDate : new Date(classEndDate)
 		});
 	});
 	$.ajax({

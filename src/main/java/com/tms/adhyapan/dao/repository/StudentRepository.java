@@ -1,5 +1,6 @@
 package com.tms.adhyapan.dao.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,6 +28,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 			+ " and s.endDate > DATE(sysdate())"
 			+ " and s.id not in (select sc.studentId from StudentClass sc where sc.classId = ?2 and sc.endDate > DATE(sysdate()))")
 	List<Student> getAvailableStudentsToAssignByClassId(Long standardId, Long classId);
+	
+	List<Student> findByFirstNameContainingIgnoreCaseAndEndDateGreaterThanEqual(String firstName, Date endDate);
 	
 }
 

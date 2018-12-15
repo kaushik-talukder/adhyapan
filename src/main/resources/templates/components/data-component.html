@@ -19,7 +19,7 @@
 </select>
 
 <select required="required" id="select-class-dropdown" th:fragment="frag-class-dropdown" class="form-control selectpicker" data-live-search="true" title="Select class">
-	<option class="class-option" th:each="clazz : ${classList}" th:attr="value=${clazz.id}, end-date=${#dates.format(clazz.endDate, 'yyyy/MM/dd')}"><span th:text="${clazz.classCode}"></span></option>
+	<option class="class-option" th:each="clazz : ${classList}" th:attr="value=${clazz.id}, class-fee=${clazz.fee}, end-date=${#dates.format(clazz.endDate, 'yyyy/MM/dd')}"><span th:text="${clazz.classCode}"></span></option>
 </select>
 
 <select required="required" id="select-student-dropdown" th:fragment="frag-student-dropdown" class="form-control selectpicker" data-live-search="true" title="Select student">

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tms.adhyapan.dao.entity.FeeTxn;
 import com.tms.adhyapan.dao.repository.FeeTxnRepository;
 import com.tms.adhyapan.util.CommonConstants;
+import com.tms.adhyapan.util.CommonUtils;
 
 @Controller
 public class FeeMgmtController {
@@ -46,5 +47,13 @@ public class FeeMgmtController {
 	public List<FeeTxn> saveTutionFee(@RequestBody List<FeeTxn> feeTxnList) {
 		List<FeeTxn> savedTxnList = feeTxnRepository.saveAll(feeTxnList);
 		return savedTxnList;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/saveRegistrationFee")
+	public FeeTxn saveRegistrationFee(@RequestBody FeeTxn feeTxn) {
+		feeTxn.setMonthCode(CommonUtils.getDateAsFormat(CommonUtils.getCurrentSystemDate(), CommonConstants.DATE_FORMAT_YYYY_MMM));
+		FeeTxn savedTxn = feeTxnRepository.save(feeTxn);
+		return savedTxn;
 	}
 }

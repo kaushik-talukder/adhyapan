@@ -132,14 +132,6 @@ public class ClassMgmtController {
 		return updateCount;
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/populateClassFee")
-	public Long populateClassFee(@RequestParam(value = "classId") Long classId) {
-		Long fee = 0L;
-		fee = classRepository.getClassFee(classId);
-		return fee;
-	}
-	
 	@RequestMapping(value = "/populateClassMonth")
 	public String populateClassMonth(Model model, @RequestParam(value = "pageFragment") String pageFragment,
 			@RequestParam(value = "classId") Long classId) {

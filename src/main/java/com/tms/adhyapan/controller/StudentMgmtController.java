@@ -82,18 +82,27 @@ public class StudentMgmtController {
 		return pageFragment;
 	}
 	
-	@RequestMapping(value = "/populateStudents")
-	public String populateStudents(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+	@RequestMapping(value = "/populateActiveStudents")
+	public String populateActiveStudents(Model model, @RequestParam(value = "pageFragment") String pageFragment,
 			@RequestParam(value = "standardId") Long standardId,
-			@RequestParam(value = "classId") Long classId) {
+			@RequestParam(value = "classId") Long classId,
+			@RequestParam(value = "studentFirstName") String studentFirstName) {
 		List<Student> studentList = null;
 		
-		if(Objects.nonNull(standardId) && Objects.nonNull(classId)) {
+		if(Objects.nonNull(standardId) && Objects.nonNull(classId) && Objects.nonNull(studentFirstName)) {
+			
+		} else if(Objects.nonNull(standardId) && Objects.nonNull(classId)) {
+			
+		} else if(Objects.nonNull(standardId) && Objects.nonNull(studentFirstName)) {
+			
+		} else if(Objects.nonNull(classId) && !CommonConstants.BLANK.equalsIgnoreCase(studentFirstName.trim())) {
 			
 		} else if(Objects.nonNull(standardId)) {
 			
 		} else if(Objects.nonNull(classId)) {
 			studentList = studentRepository.getAssignedStudentsByClassId(classId);
+		} else if(Objects.nonNull(studentFirstName)) {
+			studentList = studentRepository.findByFirstNameContainingIgnoreCaseAndEndDateGreaterThanEqual(studentFirstName.trim(), CommonUtils.getCurrentSystemDate());
 		}
 		model.addAttribute("studentList", studentList);
 		return pageFragment;

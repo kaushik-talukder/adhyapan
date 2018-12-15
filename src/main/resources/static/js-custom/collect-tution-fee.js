@@ -96,6 +96,6 @@ function resetForm(){
 	$("#select-class-dropdown").val('').selectpicker('refresh');
 	$("#select-student-dropdown").val('').selectpicker('refresh');
 	$("#select-class-month-dropdown").val('').selectpicker('refresh');
-	$("#total-fee-amount").val(0);
+	$("#total-fee-amount").val("");
 	$("#remarks").val("");
 }

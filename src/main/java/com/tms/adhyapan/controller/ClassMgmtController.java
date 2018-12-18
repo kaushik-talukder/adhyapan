@@ -140,4 +140,15 @@ public class ClassMgmtController {
 		model.addAttribute("monthList", monthList);
 		return pageFragment;
 	}
+	
+	@RequestMapping(value = "/populateStudentClassMonth")
+	public String populateStudentClassMonth(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+			@RequestParam(value = "studentId") Long studentId,
+			@RequestParam(value = "classId") Long classId) {
+		StudentClass studentClass = studentClassRepository.findByStudentIdAndClassIdAndEndDateGreaterThanEqual(studentId,
+				classId, CommonUtils.getCurrentSystemDate());
+		List<String> monthList = CommonUtils.getMonthList(studentClass.getStartDate(), studentClass.getEndDate());
+		model.addAttribute("monthList", monthList);
+		return pageFragment;
+	}
 }

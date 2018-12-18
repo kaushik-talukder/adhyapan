@@ -1,11 +1,14 @@
 package com.tms.adhyapan.dao.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.tms.adhyapan.util.CommonUtils;
 
 import lombok.Data;
 
@@ -25,4 +28,5 @@ public class FeeTxn implements Serializable {
 	private String monthCode;
 	private Double feeAmount;
 	private String remarks;
+	private Date txnDate = CommonUtils.getCurrentSystemDate();
 }

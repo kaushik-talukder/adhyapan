@@ -83,3 +83,14 @@ function populateClassMonthDropdown(classId){
 		$('#select-class-month-dropdown').selectpicker('refresh');
 	});
 }
+
+function populateStudentClassMonthDropdown(studentId, classId){
+	$("#select-student-class-month-dropdown").load('populateStudentClassMonth', {
+		pageFragment : 'components/data-component.html :: frag-student-class-month-dropdown',
+		studentId: studentId,
+		classId : classId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-student-class-month-dropdown').selectpicker('refresh');
+	});
+}

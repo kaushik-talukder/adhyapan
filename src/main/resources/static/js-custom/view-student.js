@@ -37,8 +37,10 @@ function displaySearchCategoryForm(categoryValue){
 		populateStandardDropdown();
 		$("#div-by-standard").removeClass("no-display");
 	} else if(categoryValue == 'byClass'){
+		populateClassDropdown();
 		$("#div-by-class").removeClass("no-display");
 	} else if(categoryValue == 'byTeacher'){
+		populateTeacherDropdown();
 		$("#div-by-teacher").removeClass("no-display");
 	} else if(categoryValue == 'bySchool'){
 		populateSchoolDropdown();

@@ -17,9 +17,9 @@ public class CommonConstants {
 	public static final String DATE_FORMAT_DEFAULT = "yyyy-MM-dd";
 	public static final String DATE_FORMAT_YYYY_MMM = "yyyy-MMM";
 	
-	public static final int FEE_CAT_REGISTRATION = 1;
-	public static final int FEE_CAT_TUTION = 2;
-	public static final int FEE_CAT_EXAM = 3;
+	public static final Long FEE_CAT_REGISTRATION = 1L;
+	public static final Long FEE_CAT_TUTION = 2L;
+	public static final Long FEE_CAT_EXAM = 3L;
 	
 	public static final String BLANK = "";
 }

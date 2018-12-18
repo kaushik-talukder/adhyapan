@@ -19,7 +19,8 @@ $(document).ready(function() {
 	$('body').on('click', '.student-option', function() {
 		var studentId = $("#select-student-dropdown").val();
 		var classId = $("#select-class-dropdown").val();
-		populateStudentClassMonthDropdown(studentId,classId);
+		populateStudentClassMonthDropdown(studentId, classId);
+		populateStudentFeeTxnDetails(studentId, classId);
 		var classFee = $("#select-class-dropdown :checked").attr("class-fee");
 		$("#fee-per-month").val(classFee);
 	});
@@ -80,6 +81,7 @@ function saveTutionFee(){
 		contentType: "application/json"
 	}).done(function(response) {
 		resetForm();
+		populateStudentFeeTxnDetails(studentId, classId);
 		$("#tution-fee-dialog-message").dialog({
 			modal : true,
 			buttons : {
@@ -99,4 +101,15 @@ function resetForm(){
 	$("#select-student-class-month-dropdown").val('').selectpicker('refresh');
 	$("#total-fee-amount").val("");
 	$("#remarks").val("");
+}
+
+function populateStudentFeeTxnDetails(studentId, classId){
+	$("#div-student-fee-txn-details").load('populateStudentFeeTxnDetails', {
+		pageFragment : 'collect-tution-fee :: frag-student-fee-txn',
+		studentId : studentId,
+		classId : classId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#tab-student-fee-txn').DataTable();
+	});
 }

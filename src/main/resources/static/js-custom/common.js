@@ -1,3 +1,12 @@
+$("document").ready(function(){
+	$("body").on("keyup", "#student-first-name", function(){
+		if(($(this).val()).length >= 4){
+			$("#select-student-dropdown").closest("div.bootstrap-select").addClass("open");
+			populateStudentDropdown(null, null, $(this).val());
+		}
+	});
+});
+
 function thymeleafFragmentResponseCheck(response) {
 	if ((response.indexOf("Error") > -1)) {
 		$("body").html(response);
@@ -81,5 +90,16 @@ function populateClassMonthDropdown(classId){
 	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);
 		$('#select-class-month-dropdown').selectpicker('refresh');
+	});
+}
+
+function populateStudentClassMonthDropdown(studentId, classId){
+	$("#select-student-class-month-dropdown").load('populateStudentClassMonth', {
+		pageFragment : 'components/data-component.html :: frag-student-class-month-dropdown',
+		studentId: studentId,
+		classId : classId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-student-class-month-dropdown').selectpicker('refresh');
 	});
 }

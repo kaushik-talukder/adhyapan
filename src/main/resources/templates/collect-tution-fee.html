@@ -65,7 +65,7 @@
 								</div>
 								<div class="col-lg-2">
 									<label class="required">Month: </label>
-									<div th:insert="components/data-component.html :: frag-class-month-dropdown"> </div>
+									<div th:insert="components/data-component.html :: frag-student-class-month-dropdown"> </div>
 								</div>
 								<div class="col-lg-2">
 									<label class="required">Total Fee: </label>
@@ -83,6 +83,31 @@
 								</div>
 							</div>
 						</form>
+					</div>
+					<div class="panel-body">
+						<h4>Fee Payment Details</h4>
+						<div id="div-student-fee-txn-details">
+							<table id="tab-student-fee-txn" th:fragment="frag-student-fee-txn" class="table table-hover" style="width: 100%">
+								<thead>
+									<tr>
+										<th>Class</th>
+										<th>Month</th>
+										<th>Amount</th>
+										<th>Paid On</th>
+										<th>Remarks</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="feeTxn: ${feeTxnList}">
+										<td th:text="${feeTxn.classCode}"></td>
+										<td th:text="${feeTxn.monthCode}"></td>
+										<td th:text="${feeTxn.feeAmount}"></td>
+										<td th:text="${feeTxn.txnDate}"></td>
+										<td th:text="${feeTxn.remarks}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

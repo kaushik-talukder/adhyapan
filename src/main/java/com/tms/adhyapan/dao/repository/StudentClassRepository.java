@@ -14,4 +14,6 @@ public interface StudentClassRepository extends JpaRepository<StudentClass, Long
 	@Modifying
 	@Query(value = "update StudentClass sc set sc.endDate = ?1 where sc.classId = ?2 and sc.studentId in (?3)")
 	Integer removeStudentsFromClass(Date endDate, Long classId, List<Long> studentList);
+	
+	StudentClass findByStudentIdAndClassIdAndEndDateGreaterThanEqual(Long studentId, Long classId, Date sysdate);
 }

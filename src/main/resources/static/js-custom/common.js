@@ -1,3 +1,12 @@
+$("document").ready(function(){
+	$("body").on("keyup", "#student-first-name", function(){
+		if(($(this).val()).length >= 4){
+			$("#select-student-dropdown").closest("div.bootstrap-select").addClass("open");
+			populateStudentDropdown(null, null, $(this).val());
+		}
+	});
+});
+
 function thymeleafFragmentResponseCheck(response) {
 	if ((response.indexOf("Error") > -1)) {
 		$("body").html(response);

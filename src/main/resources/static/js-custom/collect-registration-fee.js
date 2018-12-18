@@ -1,10 +1,4 @@
 $(document).ready(function() {
-	$("body").on("keyup", "#student-first-name", function(){
-		if(($(this).val()).length >= 4){
-			$("#select-student-dropdown").closest("div.bootstrap-select").addClass("open");
-			populateStudentDropdown(null, null, $(this).val());
-		}
-	});
 	$("body").on("submit", "#registration-fee-form", function(e){
 		e.preventDefault();
 		$("#registration-fee-confirm-message").dialog({

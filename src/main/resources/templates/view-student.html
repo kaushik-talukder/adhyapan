@@ -79,9 +79,7 @@
 						<div class="row">
 							<div class="col-lg-4">
 								<label>Class: </label>
-								<select class="form-control selectpicker" data-live-search="true" title="Select class">
-									<option>LA Class</option>
-								</select>
+								<div th:insert="components/data-component.html :: frag-class-dropdown"> </div>
 							</div>
 						</div>
 					</div>
@@ -89,9 +87,7 @@
 						<div class="row">
 							<div class="col-lg-4">
 								<label>Teacher: </label>
-								<select class="form-control selectpicker" data-live-search="true" title="Select teacher">
-									<option>SKG</option>
-								</select>
+								<div th:insert="components/data-component.html :: frag-teacher-dropdown"> </div>
 							</div>
 						</div>
 					</div>

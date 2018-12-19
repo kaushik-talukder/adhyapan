@@ -19,4 +19,11 @@ public class ReportController {
 		ModelAndView mv = new ModelAndView("reports/tution-fee-reports");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/registrationFeeReports")
+	public ModelAndView registrationFeeReports(HttpServletRequest request) {
+		LOGGER.info("Inside registrationFeeReports");
+		ModelAndView mv = new ModelAndView("reports/registration-fee-reports");
+		return mv;
+	}
 }

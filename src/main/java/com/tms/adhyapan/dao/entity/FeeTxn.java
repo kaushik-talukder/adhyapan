@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Formula;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import com.tms.adhyapan.util.CommonUtils;
 
@@ -26,11 +27,17 @@ public class FeeTxn implements Serializable {
 	private Long feeCategoryId;
 	private Long studentId;
 	private Long classId;
-	@Formula(value = "(select c.class_code from class c where c.id = class_id)")
-	private String classCode;
 	private Long examId;
 	private String monthCode;
 	private Double feeAmount;
 	private String remarks;
 	private Date txnDate = CommonUtils.getCurrentSystemDate();
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "studentId", referencedColumnName = "id", insertable = false, updatable = false)
+	private Student student;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "classId", referencedColumnName = "id", insertable = false, updatable = false)
+	private Clazz clazz;
 }

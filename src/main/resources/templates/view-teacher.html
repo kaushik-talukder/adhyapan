@@ -59,8 +59,8 @@
 										<td th:text="${teacher.id}"></td>
 										<td th:text="${teacher.firstName +' '+teacher.lastName}"></td>
 										<td th:text="${teacher.teacherCode}"></td>
-										<td th:text="${teacher.schoolName}"></td>
-										<td th:text="${teacher.subjectName}"></td>
+										<td th:text="${teacher.school.schoolName}"></td>
+										<td th:text="${teacher.subject.subjectName}"></td>
 										<td th:text="${teacher.contact}"></td>
 										<td th:text="${teacher.address}"></td>
 										<td th:text="${teacher.activeFlag}"></td>
@@ -69,8 +69,8 @@
 										<td class="red-text" th:text="${teacher.id}"></td>
 										<td class="red-text" th:text="${teacher.firstName +' '+teacher.lastName}"></td>
 										<td class="red-text" th:text="${teacher.teacherCode}"></td>
-										<td class="red-text" th:text="${teacher.schoolName}"></td>
-										<td class="red-text" th:text="${teacher.subjectName}"></td>
+										<td class="red-text" th:text="${teacher.school.schoolName}"></td>
+										<td class="red-text" th:text="${teacher.subject.subjectName}"></td>
 										<td class="red-text" th:text="${teacher.contact}"></td>
 										<td class="red-text" th:text="${teacher.address}"></td>
 										<td class="red-text" th:text="${teacher.activeFlag}"></td>

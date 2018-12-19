@@ -4,12 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
-
-import org.hibernate.annotations.Formula;
 
 import com.tms.adhyapan.util.CommonConstants;
 import com.tms.adhyapan.util.CommonUtils;
@@ -29,11 +30,7 @@ public class Student implements Serializable {
 	private String firstName;
 	private String lastName;
 	private Long schoolId;
-	@Formula(value = "(select s.school_name from school s where s.id = school_id)")
-	private String schoolName;
 	private Long standardId;
-	@Formula(value = "(select std.standard from standard std where std.id = standard_id)")
-	private String standard;
 	private String studentContact;
 	private String guardianName;
 	private String guardianContact;
@@ -41,6 +38,14 @@ public class Student implements Serializable {
 	private String gender;
 	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "standardId", referencedColumnName = "id", insertable = false, updatable = false)
+	private Standard standard;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "schoolId", referencedColumnName = "id", insertable = false, updatable = false)
+	private School school;
 	
 	@Transient
 	private String activeFlag;

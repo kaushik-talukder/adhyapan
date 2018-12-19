@@ -4,12 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
-
-import org.hibernate.annotations.Formula;
 
 import com.tms.adhyapan.util.CommonConstants;
 import com.tms.adhyapan.util.CommonUtils;
@@ -31,13 +32,17 @@ public class Teacher implements Serializable {
 	private String contact;
 	private String address;
 	private Long schoolId;
-	@Formula(value = "(select s.school_name from school s where s.id = school_id)")
-	private String schoolName;
 	private Long subjectId;
-	@Formula(value = "(select s.subject_name from subject s where s.id = subject_id)")
-	private String subjectName;
 	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "subjectId", referencedColumnName = "id", insertable = false, updatable = false)
+	private Subject subject;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "schoolId", referencedColumnName = "id", insertable = false, updatable = false)
+	private School school;
 	
 	@Transient
 	private String activeFlag;

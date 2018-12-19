@@ -4,12 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Formula;
 
 import com.tms.adhyapan.util.CommonUtils;
 
@@ -26,24 +27,27 @@ public class Clazz implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String classCode;
-	
 	private Long subjectId;
-	@Formula(value = "(select s.subject_name from subject s where s.id = subject_id)")
-	private String subjectName;
-	
 	private Long centerId;
-	@Formula(value = "(select c.name from center c where c.id = center_id)")
-	private String centerName;
-	
-	@Formula(value = "(select concat(t.teacher_code, ' - ', t.first_name, ' ', t.last_name) from teacher t where t.id = teacher_id)")
-	private String teacherName;
 	private Long teacherId;
-	
 	private Long standardId;
-	@Formula(value = "(select stnd.standard from standard stnd where stnd.id = standard_id)")
-	private String standard; 
 	private Double fee;
-	
 	private Date startDate = CommonUtils.getCurrentSystemDate();
 	private Date endDate = CommonUtils.getDefaultEndDate();
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "standardId", referencedColumnName = "id", insertable = false, updatable = false)
+	private Standard standard;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "teacherId", referencedColumnName = "id", insertable = false, updatable = false)
+	private Teacher teacher;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "centerId", referencedColumnName = "id", insertable = false, updatable = false)
+	private Center center;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "subjectId", referencedColumnName = "id", insertable = false, updatable = false)
+	private Subject subject;
 }

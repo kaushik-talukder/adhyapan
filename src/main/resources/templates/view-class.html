@@ -57,10 +57,10 @@
 									<tr th:each="class : ${classList}">
 										<td th:text="${class.id}"></td>
 										<td th:text="${class.classCode}"></td>
-										<td th:text="${class.subjectName}"></td>
-										<td th:text="${class.teacherName}"></td>
-										<td th:text="${class.standard}"></td>
-										<td th:text="${class.centerName}"></td>
+										<td th:text="${class.subject.subjectName}"></td>
+										<td th:text="${class.teacher.teacherCode+' - '+class.teacher.firstName+' '+class.teacher.lastName}"></td>
+										<td th:text="${class.standard.standard}"></td>
+										<td th:text="${class.center.name}"></td>
 										<td th:text="${#dates.format(class.startDate, 'yyyy/MM/dd') +' - '+ #dates.format(class.endDate, 'yyyy/MM/dd')}"></td>
 									</tr>
 								</tbody>

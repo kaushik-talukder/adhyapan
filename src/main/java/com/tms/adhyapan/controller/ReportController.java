@@ -13,10 +13,17 @@ public class ReportController {
 	
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 	
-	@RequestMapping(value = "/reportHomePage")
-	public ModelAndView reportHomePage(HttpServletRequest request) {
-		LOGGER.info("Inside reportHomePage");
-		ModelAndView mv = new ModelAndView("reports/report-home");
+	@RequestMapping(value = "/tutionFeeReports")
+	public ModelAndView tutionFeeReports(HttpServletRequest request) {
+		LOGGER.info("Inside tutionFeeReports");
+		ModelAndView mv = new ModelAndView("reports/tution-fee-reports");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/registrationFeeReports")
+	public ModelAndView registrationFeeReports(HttpServletRequest request) {
+		LOGGER.info("Inside registrationFeeReports");
+		ModelAndView mv = new ModelAndView("reports/registration-fee-reports");
 		return mv;
 	}
 }

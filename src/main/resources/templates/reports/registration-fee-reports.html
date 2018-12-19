@@ -43,10 +43,10 @@
 						<h2>Registration Fee Reports</h2>
 					</div>
 					<div class="panel-body">
-						<form id="tution-fee-form" action="javascript:void(0);">
+						<form id="registration-fee-report-form" action="javascript:void(0);">
 							<div class="row">
-								<div class="col-lg-2">
-									<label class="required">Date Range</label>
+								<div class="col-lg-3">
+									<label class="required">Select Date Range</label>
 									<input required="required" type="text" readonly="readonly" class="form-control" id="startEndDate" />
 								</div>
 								<div class="col-lg-2 text-center">
@@ -54,8 +54,49 @@
 									<button class="btn btn-primary"> Get Report</button>
 								</div>
 							</div>
-							
 						</form>
+					</div>
+					<div class="panel-body">
+						<div id="div-reg-fee-report">
+							<h4>Summary</h4>
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>Student Count</th>
+										<th>Total Fee Collected</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>10</td>
+										<td>5200</td>
+									</tr>
+								</tbody>
+							</table>
+							<h4>Student List</h4>
+							<table id="tab-reg-fee-report" th:fragment="frag-reg-fee-report" class="table table-hover" style="width: 100%">
+								<thead>
+									<tr>
+										<th>First Name</th>
+										<th>Last Name</th>
+										<th>Standard</th>
+										<th>Fee Amount</th>
+										<th>Paid On</th>
+										<th>Remarks</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="regFee : ${regFeeList}">
+										<td th:text="${regFee.studentFirstName}"></td>
+										<td th:text="${regFee.studentLastName}"></td>
+										<td th:text="${regFee.standard}"></td>
+										<td th:text="${regFee.feeAmount}"></td>
+										<td th:text="${regFee.txnDate}"></td>
+										<td th:text="${regFee.remarks}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

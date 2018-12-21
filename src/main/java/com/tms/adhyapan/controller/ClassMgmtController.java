@@ -25,6 +25,7 @@ import com.tms.adhyapan.dao.repository.ClassRepository;
 import com.tms.adhyapan.dao.repository.StudentClassRepository;
 import com.tms.adhyapan.dao.repository.StudentRepository;
 import com.tms.adhyapan.util.CommonUtils;
+import com.tms.adhyapan.vo.DateRangeVO;
 
 @Controller
 public class ClassMgmtController {
@@ -132,22 +133,48 @@ public class ClassMgmtController {
 		return updateCount;
 	}
 	
-	@RequestMapping(value = "/populateClassMonth")
-	public String populateClassMonth(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+	@RequestMapping(value = "/populateClassMonthByClassId")
+	public String populateClassMonthByClassId(Model model, @RequestParam(value = "pageFragment") String pageFragment,
 			@RequestParam(value = "classId") Long classId) {
-		Clazz clazz = classRepository.findById(classId).get();
-		List<String> monthList = CommonUtils.getMonthList(clazz.getStartDate(), clazz.getEndDate());
+		DateRangeVO startEndDate = classRepository.getStartEndDateByClassId(classId);
+		List<String> monthList = CommonUtils.getMonthList(startEndDate.getStartDate(), startEndDate.getEndDate());
 		model.addAttribute("monthList", monthList);
 		return pageFragment;
 	}
 	
-	@RequestMapping(value = "/populateStudentClassMonth")
-	public String populateStudentClassMonth(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+	@RequestMapping(value = "/populateClassMonthByTeacherId")
+	public String populateClassMonthByTeacherId(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+			@RequestParam(value = "teacherId") Long teacherId) {
+		DateRangeVO startEndDate = classRepository.getStartEndDateByTeacherId(teacherId);
+		List<String> monthList = CommonUtils.getMonthList(startEndDate.getStartDate(), startEndDate.getEndDate());
+		model.addAttribute("monthList", monthList);
+		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/populateClassMonthByStandardId")
+	public String populateClassMonthByStandardId(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+			@RequestParam(value = "standardId") Long standardId) {
+		DateRangeVO startEndDate = classRepository.getStartEndDateByStandardId(standardId);
+		List<String> monthList = CommonUtils.getMonthList(startEndDate.getStartDate(), startEndDate.getEndDate());
+		model.addAttribute("monthList", monthList);
+		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/populateClassMonthByStudentId")
+	public String populateClassMonthByStudentId(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+			@RequestParam(value = "studentId") Long studentId) {
+		DateRangeVO startEndDate = studentClassRepository.getStartEndDateByStudentId(studentId);
+		List<String> monthList = CommonUtils.getMonthList(startEndDate.getStartDate(), startEndDate.getEndDate());
+		model.addAttribute("monthList", monthList);
+		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/populateClassMonthByStudentIdAndClassId")
+	public String populateClassMonthByStudentIdAndClassId(Model model, @RequestParam(value = "pageFragment") String pageFragment,
 			@RequestParam(value = "studentId") Long studentId,
 			@RequestParam(value = "classId") Long classId) {
-		StudentClass studentClass = studentClassRepository.findByStudentIdAndClassIdAndEndDateGreaterThanEqual(studentId,
-				classId, CommonUtils.getCurrentSystemDate());
-		List<String> monthList = CommonUtils.getMonthList(studentClass.getStartDate(), studentClass.getEndDate());
+		DateRangeVO startEndDate = studentClassRepository.getStartEndDateByStudentIdAndClassId(studentId, classId);
+		List<String> monthList = CommonUtils.getMonthList(startEndDate.getStartDate(), startEndDate.getEndDate());
 		model.addAttribute("monthList", monthList);
 		return pageFragment;
 	}

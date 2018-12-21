@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class CommonUtils {
 
@@ -42,16 +43,18 @@ public class CommonUtils {
 	
 	public static List<String> getMonthList(Date startDate, Date endDate){
 		List<String> monthList = new ArrayList<>();
-		String startDateStr = getDateAsFormat(startDate, CommonConstants.DATE_FORMAT_YYYY_MMM);
-		String endDateStr = getDateAsFormat(endDate, CommonConstants.DATE_FORMAT_YYYY_MMM);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(CommonConstants.DATE_FORMAT_YYYY_MMM, Locale.ENGLISH);
-		YearMonth startYearMonth = YearMonth.parse(startDateStr, formatter);
-	    YearMonth endYearMonth = YearMonth.parse(endDateStr, formatter);
-	    while(startYearMonth.isBefore(endYearMonth)) {
-	    	monthList.add(startYearMonth.format(formatter));
-	    	startYearMonth = startYearMonth.plusMonths(1);
-	    }
-	    monthList.add(startYearMonth.format(formatter));
+		if(Objects.nonNull(startDate) && Objects.nonNull(endDate)) {
+			String startDateStr = getDateAsFormat(startDate, CommonConstants.DATE_FORMAT_YYYY_MMM);
+			String endDateStr = getDateAsFormat(endDate, CommonConstants.DATE_FORMAT_YYYY_MMM);
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(CommonConstants.DATE_FORMAT_YYYY_MMM, Locale.ENGLISH);
+			YearMonth startYearMonth = YearMonth.parse(startDateStr, formatter);
+		    YearMonth endYearMonth = YearMonth.parse(endDateStr, formatter);
+		    while(startYearMonth.isBefore(endYearMonth)) {
+		    	monthList.add(startYearMonth.format(formatter));
+		    	startYearMonth = startYearMonth.plusMonths(1);
+		    }
+		    monthList.add(startYearMonth.format(formatter));
+		}
 	    return monthList;
 	}
 }

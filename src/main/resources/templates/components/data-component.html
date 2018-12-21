@@ -29,7 +29,3 @@
 <select required="required" id="select-class-month-dropdown" th:fragment="frag-class-month-dropdown" class="form-control selectpicker" data-live-search="true" multiple="multiple" title="Select month">
 	<option class="class-month-option" th:each="month : ${monthList}" th:attr="value=${month}"><span th:text="${month}"></span></option>
 </select>
-
-<select required="required" id="select-student-class-month-dropdown" th:fragment="frag-student-class-month-dropdown" class="form-control selectpicker" data-live-search="true" multiple="multiple" title="Select month">
-	<option class="student-class-month-option" th:each="month : ${monthList}" th:attr="value=${month}"><span th:text="${month}"></span></option>
-</select>

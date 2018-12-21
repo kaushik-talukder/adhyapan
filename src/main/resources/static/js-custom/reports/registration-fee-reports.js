@@ -6,13 +6,13 @@ $("document").ready(function(){
 		startDate : moment().add(-1,'month').format('YYYY/MM/DD')
 	});
 	
+	/*var startEndDate = getStartEndDate();
+	getRegFeeReportByDateRange(startEndDate.startDate, startEndDate.endDate);*/
+	
 	$('body').on('submit', '#registration-fee-report-form', function(e) {
 		e.preventDefault();
-		var startEndDateStr = $("#startEndDate").val();
-		var startEndDateArr = startEndDateStr.split(' - ');
-		var startDate = $.trim(startEndDateArr[0]);
-		var endDate = $.trim(startEndDateArr[1]);
-		getRegFeeReportByDateRange(startDate, endDate);
+		var startEndDate = getStartEndDate();
+		getRegFeeReportByDateRange(startEndDate.startDate, startEndDate.endDate);
 	});
 });
 
@@ -20,9 +20,18 @@ function getRegFeeReportByDateRange(startDate, endDate){
 	$("#div-reg-fee-report").load('getRegFeeReportByDateRange', {
 		pageFragment : 'reports/registration-fee-reports :: frag-reg-fee-report',
 		startDate : new Date(startDate),
-		enddate : new Date(endDate)
+		endDate : new Date(endDate)
 	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);
-		$('#tab-all-school').DataTable();
+		$('#tab-reg-fee-report').DataTable();
 	});
+}
+
+function getStartEndDate(){
+	var startEndDate = {};
+	var startEndDateStr = $("#startEndDate").val();
+	var startEndDateArr = startEndDateStr.split(' - ');
+	startEndDate.startDate = $.trim(startEndDateArr[0]);
+	startEndDate.endDate = $.trim(startEndDateArr[1]);
+	return startEndDate;
 }

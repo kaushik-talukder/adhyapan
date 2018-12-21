@@ -57,45 +57,48 @@
 						</form>
 					</div>
 					<div class="panel-body">
-						<div id="div-reg-fee-report">
-							<h4>Summary</h4>
-							<table class="table table-hover">
-								<thead>
-									<tr>
-										<th>Student Count</th>
-										<th>Total Fee Collected</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>10</td>
-										<td>5200</td>
-									</tr>
-								</tbody>
-							</table>
-							<h4>Student List</h4>
-							<table id="tab-reg-fee-report" th:fragment="frag-reg-fee-report" class="table table-hover" style="width: 100%">
-								<thead>
-									<tr>
-										<th>First Name</th>
-										<th>Last Name</th>
-										<th>Standard</th>
-										<th>Fee Amount</th>
-										<th>Paid On</th>
-										<th>Remarks</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="regFee : ${regFeeList}">
-										<td th:text="${regFee.studentFirstName}"></td>
-										<td th:text="${regFee.studentLastName}"></td>
-										<td th:text="${regFee.standard}"></td>
-										<td th:text="${regFee.feeAmount}"></td>
-										<td th:text="${regFee.txnDate}"></td>
-										<td th:text="${regFee.remarks}"></td>
-									</tr>
-								</tbody>
-							</table>
+						<div id="div-reg-fee-report" th:fragment="frag-reg-fee-report">
+							<div th:if="${registrationFeeReport != null}">
+								<h4>Summary</h4>
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>Student Count</th>
+											<th>Total Fee Collected</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span th:text="${registrationFeeReport.summary.count}"></span></td>
+											<td><span th:text="${registrationFeeReport.summary.totalCollectedFee}"></span></td>
+										</tr>
+									</tbody>
+								</table>
+								<hr/>
+								<h4>Student List</h4>
+								<table id="tab-reg-fee-report" class="table table-hover" style="width: 100%">
+									<thead>
+										<tr>
+											<th>First Name</th>
+											<th>Last Name</th>
+											<th>Standard</th>
+											<th>Fee Amount</th>
+											<th>Paid On</th>
+											<th>Remarks</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="feeTxn : ${registrationFeeReport.studentFeeTxnList}">
+											<td th:text="${feeTxn.studentFirstName}"></td>
+											<td th:text="${feeTxn.studentLastName}"></td>
+											<td th:text="${feeTxn.standard}"></td>
+											<td th:text="${feeTxn.feeAmount}"></td>
+											<td th:text="${feeTxn.txnDate}"></td>
+											<td th:text="${feeTxn.remarks}"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -17,4 +17,7 @@ public interface ClassRepository extends JpaRepository<Clazz, Long> {
 	List<Clazz> findByStandardIdAndSubjectIdAndTeacherId(Long standardId, Long subjectId, Long teacherid);
 	@Query(value = "select c.fee from Clazz c where c.id = ?1")
 	Long getClassFee(Long classId);
+	
+	@Query(value = "select c from Clazz c, StudentClass sc where c.id = sc.classId and sc.studentId = ?1 and sysdate() >= sc.endDate")
+	List<Clazz> getAssignedClassesByStudentId(Long studentId);
 }

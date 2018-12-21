@@ -1,22 +1,10 @@
 $(document).ready(function() {
-	populateSubjectDropdown();
-	$('body').on('click', '.subject-option', function() {
-		var subjectId = $("#select-subject-dropdown").val();
-		populateTeacherDropdown(subjectId);
+	$('body').on('click', '.student-option', function() {
+		var studentId = $("#select-student-dropdown").val();
+		populateClassDropdownByStudent(studentId);
 	});
-	
-	$('body').on('click', '.teacher-option', function() {
-		var subjectId = $("#select-subject-dropdown").val();
-		var teacherId = $("#select-teacher-dropdown").val();
-		populateClassDropdown(null,subjectId,teacherId);
-	});	
 	
 	$('body').on('click', '.class-option', function() {
-		var classId = $("#select-class-dropdown").val();
-		populateStudentDropdown(null,classId, null);
-	});
-	
-	$('body').on('click', '.student-option', function() {
 		var studentId = $("#select-student-dropdown").val();
 		var classId = $("#select-class-dropdown").val();
 		populateStudentClassMonthDropdown(studentId, classId);
@@ -24,6 +12,8 @@ $(document).ready(function() {
 		var classFee = $("#select-class-dropdown :checked").attr("class-fee");
 		$("#fee-per-month").val(classFee);
 	});
+	
+	
 	$('body').on('change', '#select-student-class-month-dropdown', function() {
 		var monthCode = $("#select-student-class-month-dropdown").val();
 		var feePerMonth = $("#fee-per-month").val();
@@ -94,10 +84,6 @@ function saveTutionFee(){
 }
 
 function resetForm(){
-	$("#select-subject-dropdown").val('').selectpicker('refresh');
-	$("#select-teacher-dropdown").val('').selectpicker('refresh');
-	$("#select-class-dropdown").val('').selectpicker('refresh');
-	$("#select-student-dropdown").val('').selectpicker('refresh');
 	$("#select-student-class-month-dropdown").val('').selectpicker('refresh');
 	$("#total-fee-amount").val("");
 	$("#remarks").val("");

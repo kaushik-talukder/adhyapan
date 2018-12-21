@@ -71,6 +71,16 @@ function populateClassDropdown(standardId, subjectId, teacherId){
 	});
 }
 
+function populateClassDropdownByStudent(studentId){
+	$("#select-class-dropdown").load('populateAssignedClassesOfStudent', {
+		pageFragment : 'components/data-component.html :: frag-class-dropdown',
+		studentId : studentId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-class-dropdown').selectpicker('refresh');
+	});
+}
+
 function populateStudentDropdown(standardId, classId, studentFirstName){
 	$("#select-student-dropdown").load('populateActiveStudents', {
 		pageFragment : 'components/data-component.html :: frag-student-dropdown',

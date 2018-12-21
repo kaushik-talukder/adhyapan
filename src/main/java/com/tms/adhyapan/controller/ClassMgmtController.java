@@ -151,4 +151,12 @@ public class ClassMgmtController {
 		model.addAttribute("monthList", monthList);
 		return pageFragment;
 	}
+	
+	@RequestMapping(value = "/populateAssignedClassesOfStudent")
+	public String populateAssignedClassesOfStudent(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+			@RequestParam(value = "studentId") Long studentId) {
+		List<Clazz> classList = classRepository.getAssignedClassesByStudentId(studentId);
+		model.addAttribute("classList", classList);
+		return pageFragment;
+	}
 }

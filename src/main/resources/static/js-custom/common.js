@@ -143,3 +143,56 @@ function populateClassMonthDropdownByStudentIdAndClassId(studentId, classId){
 		$('#select-class-month-dropdown').selectpicker('refresh');
 	});
 }
+
+//
+
+function populateClassMonthDropdownByClassIdMultiSelect(classId){
+	$("#select-class-month-dropdown").load('populateClassMonthByClassId', {
+		pageFragment : 'components/data-component.html :: frag-class-month-dropdown-multi',
+		classId : classId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-class-month-dropdown').selectpicker('refresh');
+	});
+}
+
+function populateClassMonthDropdownByTeacherIdMultiSelect(teacherId){
+	$("#select-class-month-dropdown").load('populateClassMonthByTeacherId', {
+		pageFragment : 'components/data-component.html :: frag-class-month-dropdown-multi',
+		teacherId : teacherId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-class-month-dropdown').selectpicker('refresh');
+	});
+}
+
+function populateClassMonthDropdownByStandardIdMultiSelect(standardId){
+	$("#select-class-month-dropdown").load('populateClassMonthByStandardId', {
+		pageFragment : 'components/data-component.html :: frag-class-month-dropdown-multi',
+		standardId : standardId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-class-month-dropdown').selectpicker('refresh');
+	});
+}
+
+function populateClassMonthDropdownByStudentIdMultiSelect(studentId){
+	$("#select-class-month-dropdown").load('populateClassMonthByStudentId', {
+		pageFragment : 'components/data-component.html :: frag-class-month-dropdown-multi',
+		studentId : studentId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-class-month-dropdown').selectpicker('refresh');
+	});
+}
+
+function populateClassMonthDropdownByStudentIdAndClassIdMultiSelect(studentId, classId){
+	$("#select-class-month-dropdown").load('populateClassMonthByStudentIdAndClassId', {
+		pageFragment : 'components/data-component.html :: frag-class-month-dropdown-multi',
+		studentId: studentId,
+		classId : classId
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#select-class-month-dropdown').selectpicker('refresh');
+	});
+}

@@ -7,7 +7,7 @@ $(document).ready(function() {
 	$('body').on('click', '.class-option', function() {
 		var studentId = $("#select-student-dropdown").val();
 		var classId = $("#select-class-dropdown").val();
-		populateClassMonthDropdownByStudentIdAndClassId(studentId, classId);
+		populateClassMonthDropdownByStudentIdAndClassIdMultiSelect(studentId, classId);
 		populateStudentFeeTxnDetails(studentId, classId);
 		var classFee = $("#select-class-dropdown :checked").attr("class-fee");
 		$("#fee-per-month").val(classFee);

@@ -13,9 +13,17 @@ public interface FeeTxnRepository extends JpaRepository<FeeTxn, Long> {
 	List<FeeTxn> findByStudentIdAndClassIdAndFeeCategoryIdOrderByTxnDateDesc(Long studentId, Long classId, Long categoryId);
 	
 	@Query(value = "select f from FeeTxn f where f.feeCategoryId = ?1 and DATE(f.txnDate) between ?2 and ?3")
-	List<FeeTxn> getFeeTxnByFeeCategoryIdAndTxnDateBetween(Long categoryId, Date startDate, Date endDate);
+	List<FeeTxn> getFeeTxnByCategoryIdAndTxnDateBetween(Long categoryId, Date startDate, Date endDate);
 	
 	@Query(value = "select new com.tms.adhyapan.vo.SummaryReportVO(count(1), sum(feeAmount)) from FeeTxn f where f.feeCategoryId = ?1 and DATE(f.txnDate) between ?2 and ?3")
 	SummaryReportVO getRegFeeSummaryReport(Long categoryId, Date startDate, Date endDate);
 	
+	@Query(value = "select new com.tms.adhyapan.vo.SummaryReportVO(count(1), sum(feeAmount)) from FeeTxn f"
+			+ " where f.feeCategoryId = ?1"
+			+ " and f.classId = ?2"
+			+ " and f.monthCode = ?3")
+	SummaryReportVO getTutionFeeClassSummaryReport(Long categoryId, Long classId, String monthCode);
+	
+	@Query(value = "select f from FeeTxn f where f.feeCategoryId = ?1 and f.classId = ?2 and f.monthCode = ?3")
+	List<FeeTxn> getFeeTxnClassByCategoryIdAndMonthCode(Long categoryId, Long classId, String monthCode);
 }

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tms.adhyapan.service.IReportService;
 import com.tms.adhyapan.vo.RegistrationFeeReportVO;
+import com.tms.adhyapan.vo.TutionFeeClassReportVO;
 
 @Controller
 public class ReportController {
@@ -44,6 +45,15 @@ public class ReportController {
 			@RequestParam(value = "endDate") Date endDate) {
 		RegistrationFeeReportVO registrationFeeReport = reportService.getRegistrationFeeReport(startDate, endDate);
 		model.addAttribute("registrationFeeReport", registrationFeeReport);
+		return pageFragment;
+	}
+	
+	@RequestMapping(value = "/getTutionFeeClassReport")
+	public String getTutionFeeClassReport(Model model, @RequestParam(value = "pageFragment") String pageFragment,
+			@RequestParam(value = "classId") Long classId,
+			@RequestParam(value = "monthCode") String monthCode) {
+		TutionFeeClassReportVO tutionFeeClassReport = reportService.getTutionFeeClassReport(classId, monthCode);
+		model.addAttribute("tutionFeeClassReport", tutionFeeClassReport);
 		return pageFragment;
 	}
 }

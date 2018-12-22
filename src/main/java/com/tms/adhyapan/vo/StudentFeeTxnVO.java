@@ -8,8 +8,9 @@ import lombok.Data;
 @Data
 @Builder
 public class StudentFeeTxnVO {
-	private String studentFirstName;
-	private String studentLastName;
+	private Long studentId;
+	private String firstName;
+	private String lastName;
 	private String standard;
 	private Double feeAmount;
 	private Date txnDate;

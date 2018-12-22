@@ -26,4 +26,7 @@ public interface StudentClassRepository extends JpaRepository<StudentClass, Long
 			+ " and sc.classId = ?2"
 			+ " and sc.endDate >= DATE(sysdate())")
 	DateRangeVO getStartEndDateByStudentIdAndClassId(Long studentId, Long classId);
+	
+	@Query(value = "select count(1) from StudentClass sc where sc.classId = ?1 and sc.endDate >= DATE(sysdate())")
+	Long getActiveStudentCountByClassId(Long classId);
 }

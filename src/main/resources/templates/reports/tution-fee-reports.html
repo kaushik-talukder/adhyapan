@@ -76,13 +76,64 @@
 										<div th:insert="components/data-component.html :: frag-student-dropdown"> </div>
 									</div>
 								</div>
+								<div class="col-lg-2 no-display" id="get-class-month-block">
+									<label>&nbsp;</label><br/>
+									<div th:insert="components/data-component.html :: frag-class-month-dropdown"> </div>
+								</div>
 								<div class="col-lg-2 no-display text-center" id="get-report-btn-block">
 									<label>&nbsp;</label><br/>
-									<button id="btn-get-report" class="btn btn-primary">Get Report</button>
+									<button id="btn-get-report" type="button" class="btn btn-primary">Get Report</button>
 								</div>
 							</div>
 							
 						</form>
+					</div>
+					<div class="panel-body">
+						<div id="div-tution-fee-class-report" th:fragment="frag-tution-fee-class-report">
+							<div th:if="${tutionFeeClassReport != null}">
+								<h4>Summary</h4>
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>Total Student Count</th>
+											<th>Total Fee Collected</th>
+											<th>Fee Paid Count</th>
+											<th>Pending Count</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span th:text="${tutionFeeClassReport.summary.totalStudentCount}"></span></td>
+											<td><span th:text="${tutionFeeClassReport.summary.totalCollectedFee}"></span></td>
+											<td><span th:text="${tutionFeeClassReport.summary.totalPaidStudentCount}"></span></td>
+											<td><span th:text="${tutionFeeClassReport.summary.totalStudentCount}"></span></td>
+										</tr>
+									</tbody>
+								</table>
+								<hr/>
+								<h4>Student List</h4>
+								<table id="tab-tution-fee-class-report" class="table table-hover" style="width: 100%">
+									<thead>
+										<tr>
+											<th>First Name</th>
+											<th>Last Name</th>
+											<th>Fee Amount</th>
+											<th>Paid On</th>
+											<th>Remarks</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="feeTxn : ${tutionFeeClassReport.studentFeeTxnList}">
+											<td th:text="${feeTxn.firstName}"></td>
+											<td th:text="${feeTxn.lastName}"></td>
+											<td th:text="${feeTxn.feeAmount}"></td>
+											<td th:text="${feeTxn.txnDate}"></td>
+											<td th:text="${feeTxn.remarks}"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -7,15 +7,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tms.adhyapan.dao.entity.Clazz;
 import com.tms.adhyapan.dao.entity.FeeTxn;
+import com.tms.adhyapan.dao.repository.ClassRepository;
 import com.tms.adhyapan.dao.repository.FeeTxnRepository;
 import com.tms.adhyapan.dao.repository.StudentClassRepository;
 import com.tms.adhyapan.service.IReportService;
 import com.tms.adhyapan.util.CommonConstants;
+import com.tms.adhyapan.vo.ClassFeeTxnVO;
 import com.tms.adhyapan.vo.RegistrationFeeReportVO;
 import com.tms.adhyapan.vo.StudentFeeTxnVO;
 import com.tms.adhyapan.vo.SummaryReportVO;
 import com.tms.adhyapan.vo.TutionFeeClassReportVO;
+import com.tms.adhyapan.vo.TutionFeeStudentReportVO;
 
 @Service
 public class ReportServiceImpl implements IReportService {
@@ -24,6 +28,8 @@ public class ReportServiceImpl implements IReportService {
 	private FeeTxnRepository feeTxnRepository;
 	@Autowired
 	private StudentClassRepository studentClassRepository;
+	@Autowired
+	private ClassRepository classRepository;
 
 	@Override
 	public RegistrationFeeReportVO getRegistrationFeeReport(Date startDate, Date endDate) {
@@ -70,5 +76,31 @@ public class ReportServiceImpl implements IReportService {
 		tutionFeeClassReport.setSummary(summaryReport);
 		tutionFeeClassReport.setStudentFeeTxnList(studentFeeTxnList);
 		return tutionFeeClassReport;
+	}
+
+	@Override
+	public TutionFeeStudentReportVO getTutionFeeStudentReport(Long studentId, String monthCode) {
+		List<Clazz> enrolledClasses = classRepository.getActiveClassesByStudentIdAndMonth(studentId, monthCode);
+		List<FeeTxn> studentClassFeeTxnList = feeTxnRepository.getFeeTxnStudentByMonth(CommonConstants.FEE_CAT_TUTION, studentId, monthCode);
+		List<ClassFeeTxnVO> classFeeTxnList = new ArrayList<>();
+		
+		for(Clazz cls : enrolledClasses) {
+			ClassFeeTxnVO classFeeTxn = new ClassFeeTxnVO();
+			classFeeTxn.setClassId(cls.getId());
+			classFeeTxn.setClassCode(cls.getClassCode());
+			for(FeeTxn feeTxn : studentClassFeeTxnList) {
+				if(cls.getId().equals(feeTxn.getClassId())) {
+					classFeeTxn.setFeeAmount(classFeeTxn.getFeeAmount()+feeTxn.getFeeAmount());
+					classFeeTxn.setTxnDateStr(classFeeTxn.getTxnDateStr() + " / " + feeTxn.getTxnDate().toString());
+					classFeeTxn.setRemarks(classFeeTxn.getRemarks() + " / "+ feeTxn.getRemarks());
+				} else {
+					
+				}
+			}
+			classFeeTxnList.add(classFeeTxn);
+		}
+		TutionFeeStudentReportVO tutionFeeStudentReport = new TutionFeeStudentReportVO();
+		tutionFeeStudentReport.setClassFeeTxnList(classFeeTxnList);
+		return tutionFeeStudentReport;
 	}
 }

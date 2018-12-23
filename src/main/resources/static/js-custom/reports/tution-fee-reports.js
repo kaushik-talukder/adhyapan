@@ -21,11 +21,13 @@ $("document").ready(function(){
 	});
 	$("body").on("click","#btn-get-report", function(){
 		var reportByKey = $('input[name=report-by-grp]:checked').val();
-		//alert(reportByKey);
 		var classId = $("#select-class-dropdown").val();
+		var studentId = $("#select-student-dropdown").val();
 		var monthCode = $("#select-class-month-dropdown").val();
 		if('byClass' == reportByKey){
 			getTutionFeeClassReport(classId, monthCode);
+		} else if('byStudent' == reportByKey){
+			getTutionFeeStudentReport(studentId, monthCode);
 		}
 	})
 });
@@ -65,5 +67,16 @@ function getTutionFeeClassReport(classId, monthCode){
 	}, function(response, status, xhr) {
 		thymeleafFragmentResponseCheck(response);
 		$('#tab-tution-fee-class-report').DataTable();
+	});
+}
+
+function getTutionFeeStudentReport(studentId, monthCode){
+	$("#div-tution-fee-student-report").load('getTutionFeeStudentReport', {
+		pageFragment : 'reports/tution-fee-reports :: frag-tution-fee-student-report',
+		studentId : studentId,
+		monthCode : monthCode
+	}, function(response, status, xhr) {
+		thymeleafFragmentResponseCheck(response);
+		$('#tab-tution-fee-student-report').DataTable();
 	});
 }

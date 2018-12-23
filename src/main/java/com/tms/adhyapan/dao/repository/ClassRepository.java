@@ -30,4 +30,11 @@ public interface ClassRepository extends JpaRepository<Clazz, Long> {
 	
 	@Query(value = "select new com.tms.adhyapan.vo.DateRangeVO(min(c.startDate), max(c.endDate)) from Clazz c where c.standardId = ?1 and c.endDate >= DATE(sysdate())")
 	DateRangeVO getStartEndDateByStandardId(Long standardId);
+	
+	@Query(value = "select c from Clazz c, StudentClass sc"
+			+ " where c.id = sc.classId"
+			+ " and sc.studentId = ?1"
+			+ " and str_to_date(?2, '%Y-%b') between str_to_date(DATE_FORMAT(sc.startDate, '%Y-%b'),'%Y-%b')"
+			+ " and str_to_date(DATE_FORMAT(sc.endDate, '%Y-%b'),'%Y-%b')")
+	List<Clazz> getActiveClassesByStudentIdAndMonth(Long studentId, String monthCode);
 }

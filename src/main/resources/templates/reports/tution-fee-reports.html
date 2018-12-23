@@ -134,6 +134,30 @@
 								</table>
 							</div>
 						</div>
+						
+						<div id="div-tution-fee-student-report" th:fragment="frag-tution-fee-student-report">
+							<div th:if="${tutionFeeStudentReport != null}">
+								<h4>Class List</h4>
+								<table id="tab-tution-fee-student-report" class="table table-hover" style="width: 100%">
+									<thead>
+										<tr>
+											<th>Class Code</th>
+											<th>Fee Amount</th>
+											<th>Paid On</th>
+											<th>Remarks</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="feeTxn : ${tutionFeeStudentReport.classFeeTxnList}">
+											<td th:text="${feeTxn.classCode}"></td>
+											<td th:text="${feeTxn.feeAmount}"></td>
+											<td th:text="${feeTxn.txnDateStr}"></td>
+											<td th:text="${feeTxn.remarks}"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

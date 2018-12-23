@@ -26,4 +26,10 @@ public interface FeeTxnRepository extends JpaRepository<FeeTxn, Long> {
 	
 	@Query(value = "select f from FeeTxn f where f.feeCategoryId = ?1 and f.classId = ?2 and f.monthCode = ?3")
 	List<FeeTxn> getFeeTxnClassByCategoryIdAndMonthCode(Long categoryId, Long classId, String monthCode);
+	
+	@Query(value = "select f from FeeTxn f"
+			+ " where f.feeCategoryId = ?1"
+			+ " and f.studentId = ?2"
+			+ " and f.monthCode = ?3")
+	List<FeeTxn> getFeeTxnStudentByMonth(Long categoryId, Long studentId, String monthCode);
 }

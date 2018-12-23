@@ -1,26 +1,17 @@
 package com.tms.adhyapan.vo;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 public class SummaryReportVO {
-	private Long totalStudentCount;
-	private Long totalPaidStudentCount;
-	private Long totalClassCount;
-	private Double totalCollectedFee;
+	private Long studentCount;
+	private Long paidStudentCount;
+	private Long classCount;
+	private Double collectedFee;
+	private Long pendingStudentCount;
 	
-	public SummaryReportVO(Long totalStudentCount, Double totalFee) {
-		this.totalStudentCount = totalStudentCount;
-		this.totalCollectedFee = totalFee;
-	}
-
-	public SummaryReportVO(Long totalStudentCount, Long totalPaidStudentCount, Long totalClassCount,
-			Double totalCollectedFee) {
-		this.totalStudentCount = totalStudentCount;
-		this.totalPaidStudentCount = totalPaidStudentCount;
-		this.totalClassCount = totalClassCount;
-		this.totalCollectedFee = totalCollectedFee;
+	public SummaryReportVO(Long paidStudentCount, Double totalFee) {
+		this.paidStudentCount = paidStudentCount;
+		this.collectedFee = totalFee;
 	}
 }

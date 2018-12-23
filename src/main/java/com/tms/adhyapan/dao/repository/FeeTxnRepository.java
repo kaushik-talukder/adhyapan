@@ -18,7 +18,7 @@ public interface FeeTxnRepository extends JpaRepository<FeeTxn, Long> {
 	@Query(value = "select new com.tms.adhyapan.vo.SummaryReportVO(count(1), sum(feeAmount)) from FeeTxn f where f.feeCategoryId = ?1 and DATE(f.txnDate) between ?2 and ?3")
 	SummaryReportVO getRegFeeSummaryReport(Long categoryId, Date startDate, Date endDate);
 	
-	@Query(value = "select new com.tms.adhyapan.vo.SummaryReportVO(count(1), sum(feeAmount)) from FeeTxn f"
+	@Query(value = "select new com.tms.adhyapan.vo.SummaryReportVO(count(distinct f.studentId), sum(feeAmount)) from FeeTxn f"
 			+ " where f.feeCategoryId = ?1"
 			+ " and f.classId = ?2"
 			+ " and f.monthCode = ?3")

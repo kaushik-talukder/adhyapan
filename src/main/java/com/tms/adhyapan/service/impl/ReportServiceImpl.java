@@ -51,9 +51,10 @@ public class ReportServiceImpl implements IReportService {
 
 		TutionFeeClassReportVO tutionFeeClassReport = new TutionFeeClassReportVO();
 		SummaryReportVO summaryReport = feeTxnRepository.getTutionFeeClassSummaryReport(CommonConstants.FEE_CAT_TUTION, classId, monthCode);
-		Long totalStudentCount = studentClassRepository.getActiveStudentCountByClassId(classId);
+		Long totalStudentCount = studentClassRepository.getActiveStudentCountByClassIdAndMonth(classId, monthCode);
 		List<FeeTxn> feeTxnList = feeTxnRepository.getFeeTxnClassByCategoryIdAndMonthCode(CommonConstants.FEE_CAT_TUTION, classId, monthCode);
-		summaryReport.setTotalStudentCount(totalStudentCount);
+		summaryReport.setStudentCount(totalStudentCount);
+		summaryReport.setPendingStudentCount(totalStudentCount - summaryReport.getPaidStudentCount());
 		tutionFeeClassReport.setSummary(summaryReport);
 		List<StudentFeeTxnVO> studentFeeTxnList = new ArrayList<>();
 		for(FeeTxn feeTxn : feeTxnList) {

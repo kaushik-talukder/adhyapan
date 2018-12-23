@@ -142,6 +142,7 @@
 									<thead>
 										<tr>
 											<th>Class Code</th>
+											<th>Status</th>
 											<th>Fee Amount</th>
 											<th>Paid On</th>
 											<th>Remarks</th>
@@ -150,8 +151,9 @@
 									<tbody>
 										<tr th:each="feeTxn : ${tutionFeeStudentReport.classFeeTxnList}">
 											<td th:text="${feeTxn.classCode}"></td>
+											<td th:text="${feeTxn.paymentStatus}"></td>
 											<td th:text="${feeTxn.feeAmount}"></td>
-											<td th:text="${feeTxn.txnDateStr}"></td>
+											<td th:text="${feeTxn.txnDate}"></td>
 											<td th:text="${feeTxn.remarks}"></td>
 										</tr>
 									</tbody>

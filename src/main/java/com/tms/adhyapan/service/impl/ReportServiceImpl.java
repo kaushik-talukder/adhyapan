@@ -2,7 +2,9 @@ package com.tms.adhyapan.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -84,21 +86,29 @@ public class ReportServiceImpl implements IReportService {
 		List<FeeTxn> studentClassFeeTxnList = feeTxnRepository.getFeeTxnStudentByMonth(CommonConstants.FEE_CAT_TUTION, studentId, monthCode);
 		List<ClassFeeTxnVO> classFeeTxnList = new ArrayList<>();
 		
-		for(Clazz cls : enrolledClasses) {
+		Set<Long> paidClassIdSet = new HashSet<>();
+		for(FeeTxn feeTxn : studentClassFeeTxnList) {
 			ClassFeeTxnVO classFeeTxn = new ClassFeeTxnVO();
-			classFeeTxn.setClassId(cls.getId());
-			classFeeTxn.setClassCode(cls.getClassCode());
-			for(FeeTxn feeTxn : studentClassFeeTxnList) {
-				if(cls.getId().equals(feeTxn.getClassId())) {
-					classFeeTxn.setFeeAmount(classFeeTxn.getFeeAmount()+feeTxn.getFeeAmount());
-					classFeeTxn.setTxnDateStr(classFeeTxn.getTxnDateStr() + " / " + feeTxn.getTxnDate().toString());
-					classFeeTxn.setRemarks(classFeeTxn.getRemarks() + " / "+ feeTxn.getRemarks());
-				} else {
-					
-				}
-			}
+			classFeeTxn.setClassId(feeTxn.getClazz().getId());
+			classFeeTxn.setClassCode(feeTxn.getClazz().getClassCode());
+			classFeeTxn.setFeeAmount(feeTxn.getFeeAmount());
+			classFeeTxn.setTxnDate(feeTxn.getTxnDate());
+			classFeeTxn.setRemarks(feeTxn.getRemarks());
+			classFeeTxn.setPaymentStatus(CommonConstants.STATUS_PAID);
 			classFeeTxnList.add(classFeeTxn);
+			paidClassIdSet.add(classFeeTxn.getClassId());
 		}
+		
+		for(Clazz cls : enrolledClasses) {
+			if(!paidClassIdSet.contains(cls.getId())) {
+				ClassFeeTxnVO classFeeTxn = new ClassFeeTxnVO();
+				classFeeTxn.setClassId(cls.getId());
+				classFeeTxn.setClassCode(cls.getClassCode());
+				classFeeTxn.setPaymentStatus(CommonConstants.STATUS_PENDING);
+				classFeeTxnList.add(classFeeTxn);
+			}
+		}
+		
 		TutionFeeStudentReportVO tutionFeeStudentReport = new TutionFeeStudentReportVO();
 		tutionFeeStudentReport.setClassFeeTxnList(classFeeTxnList);
 		return tutionFeeStudentReport;

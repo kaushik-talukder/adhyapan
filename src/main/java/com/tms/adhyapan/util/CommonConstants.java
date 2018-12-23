@@ -22,4 +22,7 @@ public class CommonConstants {
 	public static final Long FEE_CAT_EXAM = 3L;
 	
 	public static final String BLANK = "";
+	
+	public static final String STATUS_PAID = "Paid";
+	public static final String STATUS_PENDING = "Pending";
 }

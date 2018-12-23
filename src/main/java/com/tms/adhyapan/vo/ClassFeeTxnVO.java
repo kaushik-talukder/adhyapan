@@ -12,10 +12,10 @@ public class ClassFeeTxnVO {
 	private String teacherCode;
 	private Long paidCount;
 	private Long pendingCount;
-	private Double feeAmount = 0.0;
+	private Double feeAmount;
 	private Date txnDate;
-	private String remarks = "";
-	private String txnDateStr = "";
+	private String remarks;
+	private String paymentStatus;
 
 	public ClassFeeTxnVO() {}
 	

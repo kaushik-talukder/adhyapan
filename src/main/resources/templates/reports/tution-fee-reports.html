@@ -89,7 +89,7 @@
 						</form>
 					</div>
 					<div class="panel-body">
-						<div id="div-tution-fee-class-report" th:fragment="frag-tution-fee-class-report">
+						<div id="div-tution-fee-class-report" class="tution-fee-report" th:fragment="frag-tution-fee-class-report">
 							<div th:if="${tutionFeeClassReport != null}">
 								<h4>Summary</h4>
 								<table class="table table-hover">
@@ -135,7 +135,7 @@
 							</div>
 						</div>
 						
-						<div id="div-tution-fee-student-report" th:fragment="frag-tution-fee-student-report">
+						<div id="div-tution-fee-student-report" class="tution-fee-report" th:fragment="frag-tution-fee-student-report">
 							<div th:if="${tutionFeeStudentReport != null}">
 								<h4>Class List</h4>
 								<table id="tab-tution-fee-student-report" class="table table-hover" style="width: 100%">

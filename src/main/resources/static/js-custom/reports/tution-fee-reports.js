@@ -34,6 +34,7 @@ $("document").ready(function(){
 
 function displayReportInputBlock(reportByKey){
 	$('.report-by-input-block').addClass("no-display");
+	$(".tution-fee-report").addClass("no-display");
 	$("#get-report-btn-block").addClass("no-display");
 	$("#get-class-month-block").addClass("no-display");
 	
@@ -51,11 +52,13 @@ function displayReportInputBlock(reportByKey){
 		$("#report-by-class-block").removeClass("no-display");
 		$("#get-class-month-block").removeClass("no-display");
 		$("#get-report-btn-block").removeClass("no-display");
+		$("#div-tution-fee-class-report").removeClass("no-display");
 		populateClassDropdown();
 	} else if('byStudent' == reportByKey) {
 		$("#report-by-student-block").removeClass("no-display");
 		$("#get-class-month-block").removeClass("no-display");
 		$("#get-report-btn-block").removeClass("no-display");
+		$("#div-tution-fee-student-report").removeClass("no-display");
 	}
 }
 
